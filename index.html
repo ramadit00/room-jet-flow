@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROOM JET FLOW // THERMAL COMFORT ANALYSIS</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Bebas+Neue&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --brutalist-black: #0a0a0a;
+            --brutalist-white: #f5f5f0;
+            --brutalist-red: #ff2d2d;
+            --brutalist-yellow: #ffeb3b;
+            --brutalist-blue: #0047ff;
+            --border-thick: 4px;
+            --border-brutal: 6px;
+        }
+
+        body {
+            font-family: 'Space Mono', monospace;
+            background: var(--brutalist-white);
+            color: var(--brutalist-black);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* HEADER */
+        header {
+            background: var(--brutalist-black);
+            color: var(--brutalist-white);
+            padding: 2rem;
+            border-bottom: var(--border-brutal) solid var(--brutalist-red);
+            position: relative;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: repeating-linear-gradient(
+                90deg,
+                var(--brutalist-yellow) 0px,
+                var(--brutalist-yellow) 20px,
+                var(--brutalist-black) 20px,
+                var(--brutalist-black) 40px
+            );
+        }
+
+        h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            letter-spacing: 0.05em;
+            line-height: 0.9;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-size: 0.875rem;
+            margin-top: 1rem;
+            opacity: 0.7;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+        }
+
+        /* MAIN GRID */
+        .container {
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            min-height: calc(100vh - 200px);
+        }
+
+        @media (max-width: 1200px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* INPUT PANEL */
+        .input-panel {
+            background: var(--brutalist-black);
+            color: var(--brutalist-white);
+            padding: 2rem;
+            border-right: var(--border-brutal) solid var(--brutalist-yellow);
+        }
+
+        .input-panel h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--brutalist-red);
+            letter-spacing: 0.1em;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            color: var(--brutalist-yellow);
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 1rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 1.25rem;
+            background: var(--brutalist-white);
+            border: var(--border-thick) solid var(--brutalist-white);
+            color: var(--brutalist-black);
+            transition: all 0.1s;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            border-color: var(--brutalist-red);
+            box-shadow: 4px 4px 0 var(--brutalist-red);
+        }
+
+        .unit {
+            font-size: 0.7rem;
+            opacity: 0.6;
+            margin-top: 0.25rem;
+        }
+
+        /* POSITION INPUTS */
+        .position-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        /* BUTTON */
+        .calculate-btn {
+            width: 100%;
+            padding: 1.5rem;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.75rem;
+            letter-spacing: 0.1em;
+            background: var(--brutalist-red);
+            color: var(--brutalist-white);
+            border: var(--border-thick) solid var(--brutalist-white);
+            cursor: pointer;
+            margin-top: 2rem;
+            transition: all 0.1s;
+            text-transform: uppercase;
+        }
+
+        .calculate-btn:hover {
+            background: var(--brutalist-yellow);
+            color: var(--brutalist-black);
+            box-shadow: 6px 6px 0 var(--brutalist-white);
+            transform: translate(-3px, -3px);
+        }
+
+        .calculate-btn:active {
+            transform: translate(0, 0);
+            box-shadow: none;
+        }
+
+        /* VISUALIZATION PANEL */
+        .viz-panel {
+            padding: 2rem;
+            background: var(--brutalist-white);
+        }
+
+        .plots-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 1400px) {
+            .plots-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .plot-wrapper {
+            background: var(--brutalist-white);
+            border: var(--border-brutal) solid var(--brutalist-black);
+            position: relative;
+        }
+
+        .plot-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: 10px;
+            bottom: 10px;
+            border: 3px solid var(--brutalist-black);
+            z-index: -1;
+        }
+
+        .plot-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            padding: 1rem;
+            background: var(--brutalist-black);
+            color: var(--brutalist-white);
+            letter-spacing: 0.1em;
+            border-bottom: 4px solid var(--brutalist-yellow);
+        }
+
+        .plot-title.draft {
+            border-bottom-color: var(--brutalist-red);
+        }
+
+        canvas {
+            width: 100%;
+            height: 400px;
+            display: block;
+            background: #1a1a1a;
+        }
+
+        .colorbar {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: var(--brutalist-black);
+            border-top: 2px solid #333;
+        }
+
+        .colorbar-gradient {
+            flex: 1;
+            height: 20px;
+            margin: 0 1rem;
+            border: 2px solid var(--brutalist-white);
+        }
+
+        .colorbar-label {
+            font-size: 0.75rem;
+            color: var(--brutalist-white);
+            min-width: 60px;
+        }
+
+        /* EQUATIONS SECTION */
+        .equations-section {
+            background: var(--brutalist-black);
+            color: var(--brutalist-white);
+            border: var(--border-brutal) solid var(--brutalist-yellow);
+            margin-top: 2rem;
+            position: relative;
+        }
+
+        .equations-section::after {
+            content: 'ASHRAE';
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--brutalist-red);
+            color: var(--brutalist-white);
+            padding: 0.25rem 1rem;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.875rem;
+            letter-spacing: 0.2em;
+        }
+
+        .equations-header {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.75rem;
+            padding: 1.5rem;
+            border-bottom: 3px solid var(--brutalist-yellow);
+            letter-spacing: 0.1em;
+        }
+
+        .equations-content {
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 900px) {
+            .equations-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .equation-block {
+            border: 2px solid #333;
+            padding: 1.5rem;
+        }
+
+        .equation-block h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.25rem;
+            color: var(--brutalist-yellow);
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+        }
+
+        .equation {
+            font-size: 0.9rem;
+            line-height: 2;
+            background: #111;
+            padding: 1rem;
+            border-left: 4px solid var(--brutalist-red);
+            margin-bottom: 1rem;
+            overflow-x: auto;
+        }
+
+        .equation-desc {
+            font-size: 0.75rem;
+            opacity: 0.7;
+            line-height: 1.6;
+        }
+
+        /* ROOM VISUALIZATION OVERLAY */
+        .room-info {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(0,0,0,0.8);
+            color: var(--brutalist-white);
+            padding: 0.5rem 1rem;
+            font-size: 0.7rem;
+            border: 1px solid var(--brutalist-yellow);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--brutalist-black);
+            color: var(--brutalist-white);
+            padding: 2rem;
+            text-align: center;
+            border-top: var(--border-brutal) solid var(--brutalist-red);
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+        }
+
+        footer a {
+            color: var(--brutalist-yellow);
+        }
+
+        /* LOADING STATE */
+        .calculating {
+            animation: brutalist-pulse 0.3s infinite alternate;
+        }
+
+        @keyframes brutalist-pulse {
+            from { opacity: 1; }
+            to { opacity: 0.5; }
+        }
+
+        /* ROOM DIMENSION INPUTS */
+        .room-section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px dashed #333;
+        }
+
+        .section-label {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.25rem;
+            color: var(--brutalist-red);
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+        }
+
+        /* STATS DISPLAY */
+        .stats-bar {
+            display: flex;
+            gap: 2rem;
+            padding: 1rem 2rem;
+            background: var(--brutalist-black);
+            border-bottom: var(--border-thick) solid var(--brutalist-yellow);
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: var(--brutalist-yellow);
+        }
+
+        .stat-label {
+            font-size: 0.65rem;
+            color: var(--brutalist-white);
+            opacity: 0.7;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        /* Canvas container for relative positioning */
+        .canvas-container {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Room Jet Flow<br>Plotter</h1>
+        <p class="subtitle">Electric Fan Thermal Comfort Analysis // ASHRAE Fundamentals</p>
+    </header>
+
+    <div class="stats-bar" id="statsBar">
+        <div class="stat-item">
+            <div class="stat-value" id="statMaxVel">—</div>
+            <div class="stat-label">Max Velocity (m/s)</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value" id="statAvgDR">—</div>
+            <div class="stat-label">Avg Draft Risk (%)</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value" id="statMaxDR">—</div>
+            <div class="stat-label">Max Draft Risk (%)</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value" id="statJetReach">—</div>
+            <div class="stat-label">Jet Reach (m)</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <aside class="input-panel">
+            <h2>Input Parameters</h2>
+
+            <div class="section-label">Environment</div>
+
+            <div class="input-group">
+                <label for="roomTemp">Room Temperature</label>
+                <input type="number" id="roomTemp" value="26" step="0.1" min="10" max="40">
+                <div class="unit">°C (Celsius)</div>
+            </div>
+
+            <div class="input-group">
+                <label for="relHumidity">Relative Humidity</label>
+                <input type="number" id="relHumidity" value="50" step="1" min="0" max="100">
+                <div class="unit">% RH</div>
+            </div>
+
+            <div class="section-label" style="margin-top: 1.5rem;">Fan Parameters</div>
+
+            <div class="input-group">
+                <label for="fanVelocity">Fan Outlet Velocity</label>
+                <input type="number" id="fanVelocity" value="3.0" step="0.1" min="0.1" max="15">
+                <div class="unit">m/s (meters per second)</div>
+            </div>
+
+            <div class="input-group">
+                <label for="fanDiameter">Fan Diameter</label>
+                <input type="number" id="fanDiameter" value="0.4" step="0.01" min="0.1" max="2">
+                <div class="unit">m (meters)</div>
+            </div>
+
+            <div class="room-section">
+                <div class="section-label">Room Dimensions</div>
+                <div class="position-grid">
+                    <div class="input-group">
+                        <label for="roomLength">Length</label>
+                        <input type="number" id="roomLength" value="8" step="0.1" min="2" max="30">
+                        <div class="unit">m</div>
+                    </div>
+                    <div class="input-group">
+                        <label for="roomWidth">Width</label>
+                        <input type="number" id="roomWidth" value="6" step="0.1" min="2" max="30">
+                        <div class="unit">m</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="room-section">
+                <div class="section-label">Fan Position</div>
+                <div class="position-grid">
+                    <div class="input-group">
+                        <label for="fanPosX">X Position</label>
+                        <input type="number" id="fanPosX" value="0.5" step="0.1" min="0">
+                        <div class="unit">m from left wall</div>
+                    </div>
+                    <div class="input-group">
+                        <label for="fanPosY">Y Position</label>
+                        <input type="number" id="fanPosY" value="3" step="0.1" min="0">
+                        <div class="unit">m from bottom wall</div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="calculate-btn" onclick="calculate()">
+                Generate Plots →
+            </button>
+        </aside>
+
+        <main class="viz-panel">
+            <div class="plots-container">
+                <div class="plot-wrapper">
+                    <div class="plot-title">Velocity Distribution (m/s)</div>
+                    <div class="canvas-container">
+                        <canvas id="velocityCanvas"></canvas>
+                        <div class="room-info" id="velInfo">Hover for values</div>
+                    </div>
+                    <div class="colorbar">
+                        <span class="colorbar-label">0.0 m/s</span>
+                        <div class="colorbar-gradient" id="velColorbar"></div>
+                        <span class="colorbar-label" id="velMax">3.0 m/s</span>
+                    </div>
+                </div>
+
+                <div class="plot-wrapper">
+                    <div class="plot-title draft">Draft Risk - % Dissatisfied</div>
+                    <div class="canvas-container">
+                        <canvas id="draftCanvas"></canvas>
+                        <div class="room-info" id="draftInfo">Hover for values</div>
+                    </div>
+                    <div class="colorbar">
+                        <span class="colorbar-label">0%</span>
+                        <div class="colorbar-gradient" id="draftColorbar"></div>
+                        <span class="colorbar-label">100%</span>
+                    </div>
+                </div>
+            </div>
+
+            <section class="equations-section">
+                <h2 class="equations-header">Equations Used — ASHRAE Handbook Fundamentals</h2>
+                <div class="equations-content">
+                    <div class="equation-block">
+                        <h3>1. Jet Centerline Velocity Decay</h3>
+                        <div class="equation">
+                            V<sub>x</sub> = V<sub>0</sub> × K × (D<sub>0</sub> / x)
+                        </div>
+                        <div class="equation-desc">
+                            <strong>Where:</strong><br>
+                            V<sub>x</sub> = Centerline velocity at distance x (m/s)<br>
+                            V<sub>0</sub> = Initial fan outlet velocity (m/s)<br>
+                            K = Throw constant ≈ 6.2 for circular jets<br>
+                            D<sub>0</sub> = Fan diameter (m)<br>
+                            x = Distance from fan (m)<br><br>
+                            <em>Valid for x > 5×D<sub>0</sub> (beyond potential core)</em>
+                        </div>
+                    </div>
+
+                    <div class="equation-block">
+                        <h3>2. Radial Velocity Profile (Gaussian)</h3>
+                        <div class="equation">
+                            V(x,r) = V<sub>x</sub> × exp(-0.693 × (r / r<sub>0.5</sub>)²)
+                        </div>
+                        <div class="equation-desc">
+                            <strong>Where:</strong><br>
+                            r = Radial distance from jet centerline (m)<br>
+                            r<sub>0.5</sub> = Jet half-width where V = 0.5×V<sub>x</sub><br>
+                            r<sub>0.5</sub> ≈ 0.097x (jet spreads at ~11° half-angle)<br><br>
+                            <em>Gaussian profile models turbulent mixing in jet</em>
+                        </div>
+                    </div>
+
+                    <div class="equation-block">
+                        <h3>3. Draft Risk (DR) — ASHRAE Standard 55</h3>
+                        <div class="equation">
+                            DR = (34 - t<sub>a</sub>) × (v - 0.05)<sup>0.62</sup> × (0.37×v×Tu + 3.14)
+                        </div>
+                        <div class="equation-desc">
+                            <strong>Where:</strong><br>
+                            DR = Draft Risk (% dissatisfied), 0-100%<br>
+                            t<sub>a</sub> = Local air temperature (°C)<br>
+                            v = Local air velocity (m/s), min 0.05<br>
+                            Tu = Turbulence intensity (30-60% for fans)<br><br>
+                            <em>DR predicts % of occupants dissatisfied due to draft</em>
+                        </div>
+                    </div>
+
+                    <div class="equation-block">
+                        <h3>4. Turbulence Intensity in Fan Jets</h3>
+                        <div class="equation">
+                            Tu(x) = Tu<sub>0</sub> + 0.05 × (x / D<sub>0</sub>)
+                        </div>
+                        <div class="equation-desc">
+                            <strong>Where:</strong><br>
+                            Tu(x) = Local turbulence intensity<br>
+                            Tu<sub>0</sub> = Initial turbulence ≈ 0.10 near fan<br>
+                            Turbulence increases with distance due to mixing<br><br>
+                            <em>Typical range: 10-60% for electric fan jets</em>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        Room Jet Flow Plotter // Based on ASHRAE Handbook — Fundamentals // Space Air Diffusion
+    </footer>
+
+    <script>
+        // Initialize canvases
+        const velCanvas = document.getElementById('velocityCanvas');
+        const draftCanvas = document.getElementById('draftCanvas');
+        const velCtx = velCanvas.getContext('2d');
+        const draftCtx = draftCanvas.getContext('2d');
+
+        // Data storage for hover
+        let velocityData = null;
+        let draftData = null;
+        let currentParams = null;
+
+        // Set canvas resolution
+        function setupCanvas(canvas, ctx) {
+            const rect = canvas.getBoundingClientRect();
+            const dpr = window.devicePixelRatio || 1;
+            canvas.width = rect.width * dpr;
+            canvas.height = rect.height * dpr;
+            ctx.scale(dpr, dpr);
+            canvas.style.width = rect.width + 'px';
+            canvas.style.height = rect.height + 'px';
+        }
+
+        // Color mapping for velocity (cool to warm)
+        function velocityColor(v, maxV) {
+            const t = Math.min(v / maxV, 1);
+            // Dark blue -> Cyan -> Green -> Yellow -> Red
+            if (t < 0.25) {
+                const s = t / 0.25;
+                return `rgb(${Math.floor(20 + s * 0)}, ${Math.floor(20 + s * 100)}, ${Math.floor(80 + s * 175)})`;
+            } else if (t < 0.5) {
+                const s = (t - 0.25) / 0.25;
+                return `rgb(${Math.floor(20 + s * 0)}, ${Math.floor(120 + s * 135)}, ${Math.floor(255 - s * 55)})`;
+            } else if (t < 0.75) {
+                const s = (t - 0.5) / 0.25;
+                return `rgb(${Math.floor(20 + s * 235)}, ${Math.floor(255)}, ${Math.floor(200 - s * 200)})`;
+            } else {
+                const s = (t - 0.75) / 0.25;
+                return `rgb(${Math.floor(255)}, ${Math.floor(255 - s * 200)}, ${Math.floor(0)})`;
+            }
+        }
+
+        // Color mapping for draft risk (green to red)
+        function draftColor(dr) {
+            const t = Math.min(dr / 100, 1);
+            if (t < 0.15) {
+                // Comfortable zone - dark green
+                return `rgb(${Math.floor(20 + t * 100)}, ${Math.floor(100 + t * 100)}, ${Math.floor(50)})`;
+            } else if (t < 0.25) {
+                // Slight risk - yellow-green
+                const s = (t - 0.15) / 0.1;
+                return `rgb(${Math.floor(35 + s * 200)}, ${Math.floor(115 + s * 140)}, ${Math.floor(50 - s * 30)})`;
+            } else if (t < 0.5) {
+                // Moderate risk - orange
+                const s = (t - 0.25) / 0.25;
+                return `rgb(${Math.floor(235 + s * 20)}, ${Math.floor(255 - s * 100)}, ${Math.floor(20)})`;
+            } else {
+                // High risk - red
+                const s = (t - 0.5) / 0.5;
+                return `rgb(${Math.floor(255)}, ${Math.floor(155 - s * 130)}, ${Math.floor(20 + s * 20)})`;
+            }
+        }
+
+        // ASHRAE Jet Flow Calculations
+        function calculateJetVelocity(x, r, V0, D0) {
+            // Throw constant for circular free jets (ASHRAE)
+            const K = 6.2;
+
+            // Potential core length
+            const xCore = 5 * D0;
+
+            let Vx; // Centerline velocity
+
+            if (x <= xCore) {
+                // Within potential core - velocity remains near V0
+                Vx = V0 * (1 - 0.1 * (x / xCore));
+            } else {
+                // Beyond potential core - velocity decays as 1/x
+                Vx = V0 * K * D0 / x;
+            }
+
+            // Jet half-width (where V = 0.5 * Vx)
+            // Jet spreads at approximately 11-12 degrees half-angle
+            const r_half = 0.097 * x + D0 / 2;
+
+            // Gaussian radial profile
+            const V = Vx * Math.exp(-0.693 * Math.pow(r / r_half, 2));
+
+            return Math.max(0, V);
+        }
+
+        // ASHRAE Draft Risk calculation
+        function calculateDraftRisk(temp, velocity, x, D0) {
+            // Local turbulence intensity increases with distance
+            const Tu0 = 0.10; // Initial turbulence near fan
+            const Tu = Math.min(0.60, Tu0 + 0.05 * (x / D0));
+
+            // Air velocity must be at least 0.05 m/s for draft sensation
+            const v = Math.max(velocity, 0.05);
+
+            // Draft Risk equation from ASHRAE Standard 55
+            // DR = (34 - ta) * (v - 0.05)^0.62 * (0.37 * v * Tu + 3.14)
+            const ta = temp;
+
+            if (v <= 0.05 || ta >= 34) {
+                return 0;
+            }
+
+            const DR = (34 - ta) * Math.pow(v - 0.05, 0.62) * (0.37 * v * Tu + 3.14);
+
+            return Math.min(100, Math.max(0, DR));
+        }
+
+        // Main calculation function
+        function calculate() {
+            const btn = document.querySelector('.calculate-btn');
+            btn.classList.add('calculating');
+            btn.textContent = 'Calculating...';
+
+            setTimeout(() => {
+                performCalculation();
+                btn.classList.remove('calculating');
+                btn.textContent = 'Generate Plots →';
+            }, 100);
+        }
+
+        function performCalculation() {
+            // Get input values
+            const roomTemp = parseFloat(document.getElementById('roomTemp').value);
+            const relHumidity = parseFloat(document.getElementById('relHumidity').value);
+            const fanVelocity = parseFloat(document.getElementById('fanVelocity').value);
+            const fanDiameter = parseFloat(document.getElementById('fanDiameter').value);
+            const roomLength = parseFloat(document.getElementById('roomLength').value);
+            const roomWidth = parseFloat(document.getElementById('roomWidth').value);
+            const fanPosX = parseFloat(document.getElementById('fanPosX').value);
+            const fanPosY = parseFloat(document.getElementById('fanPosY').value);
+
+            currentParams = {
+                roomTemp, relHumidity, fanVelocity, fanDiameter,
+                roomLength, roomWidth, fanPosX, fanPosY
+            };
+
+            // Setup canvases
+            setupCanvas(velCanvas, velCtx);
+            setupCanvas(draftCanvas, draftCtx);
+
+            const width = velCanvas.getBoundingClientRect().width;
+            const height = velCanvas.getBoundingClientRect().height;
+
+            // Resolution for calculations
+            const resolution = 2; // pixels per calculation point
+            const nx = Math.floor(width / resolution);
+            const ny = Math.floor(height / resolution);
+
+            // Scale factors
+            const scaleX = roomLength / width;
+            const scaleY = roomWidth / height;
+
+            // Store data for hover
+            velocityData = new Float32Array(nx * ny);
+            draftData = new Float32Array(nx * ny);
+
+            let maxVel = 0;
+            let sumDR = 0;
+            let maxDR = 0;
+            let jetReach = 0;
+            let countPoints = 0;
+
+            // Calculate velocity and draft at each point
+            for (let j = 0; j < ny; j++) {
+                for (let i = 0; i < nx; i++) {
+                    const px = i * resolution;
+                    const py = j * resolution;
+
+                    // Convert pixel to room coordinates
+                    const roomX = px * scaleX;
+                    const roomY = roomWidth - (py * scaleY); // Flip Y
+
+                    // Distance from fan (fan faces right, +X direction)
+                    const dx = roomX - fanPosX;
+                    const dy = roomY - fanPosY;
+
+                    let velocity = 0;
+
+                    // Only calculate for points downstream of fan (dx > 0)
+                    if (dx > 0.01) {
+                        const x = dx; // Axial distance
+                        const r = Math.abs(dy); // Radial distance from centerline
+
+                        velocity = calculateJetVelocity(x, r, fanVelocity, fanDiameter);
+
+                        // Track jet reach (where velocity > 0.25 m/s, ASHRAE threshold)
+                        if (velocity > 0.25 && Math.abs(dy) < 0.5) {
+                            jetReach = Math.max(jetReach, x);
+                        }
+                    }
+
+                    // Add small background air movement
+                    velocity = Math.max(velocity, 0.05);
+
+                    const dr = calculateDraftRisk(roomTemp, velocity,
+                        Math.max(0.1, Math.sqrt(dx*dx + dy*dy)), fanDiameter);
+
+                    const idx = j * nx + i;
+                    velocityData[idx] = velocity;
+                    draftData[idx] = dr;
+
+                    maxVel = Math.max(maxVel, velocity);
+                    maxDR = Math.max(maxDR, dr);
+                    sumDR += dr;
+                    countPoints++;
+                }
+            }
+
+            const avgDR = sumDR / countPoints;
+
+            // Update stats
+            document.getElementById('statMaxVel').textContent = maxVel.toFixed(2);
+            document.getElementById('statAvgDR').textContent = avgDR.toFixed(1);
+            document.getElementById('statMaxDR').textContent = maxDR.toFixed(1);
+            document.getElementById('statJetReach').textContent = jetReach.toFixed(1);
+            document.getElementById('velMax').textContent = maxVel.toFixed(1) + ' m/s';
+
+            // Draw velocity plot
+            for (let j = 0; j < ny; j++) {
+                for (let i = 0; i < nx; i++) {
+                    const idx = j * nx + i;
+                    const v = velocityData[idx];
+                    velCtx.fillStyle = velocityColor(v, maxVel);
+                    velCtx.fillRect(i * resolution, j * resolution, resolution, resolution);
+                }
+            }
+
+            // Draw draft plot
+            for (let j = 0; j < ny; j++) {
+                for (let i = 0; i < nx; i++) {
+                    const idx = j * nx + i;
+                    const dr = draftData[idx];
+                    draftCtx.fillStyle = draftColor(dr);
+                    draftCtx.fillRect(i * resolution, j * resolution, resolution, resolution);
+                }
+            }
+
+            // Draw room elements on both canvases
+            drawRoomElements(velCtx, width, height, fanPosX, fanPosY, roomLength, roomWidth, fanDiameter);
+            drawRoomElements(draftCtx, width, height, fanPosX, fanPosY, roomLength, roomWidth, fanDiameter);
+
+            // Update colorbars
+            updateColorbars(maxVel);
+        }
+
+        function drawRoomElements(ctx, width, height, fanX, fanY, roomL, roomW, fanD) {
+            const scaleX = width / roomL;
+            const scaleY = height / roomW;
+
+            // Fan position in pixels
+            const fpx = fanX * scaleX;
+            const fpy = height - (fanY * scaleY);
+            const fanRadius = (fanD / 2) * scaleX;
+
+            // Draw fan
+            ctx.strokeStyle = '#ffeb3b';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.arc(fpx, fpy, fanRadius, 0, Math.PI * 2);
+            ctx.stroke();
+
+            // Fan direction arrow
+            ctx.fillStyle = '#ffeb3b';
+            ctx.beginPath();
+            ctx.moveTo(fpx + fanRadius + 15, fpy);
+            ctx.lineTo(fpx + fanRadius + 5, fpy - 8);
+            ctx.lineTo(fpx + fanRadius + 5, fpy + 8);
+            ctx.closePath();
+            ctx.fill();
+
+            // Jet centerline (dashed)
+            ctx.strokeStyle = 'rgba(255, 235, 59, 0.5)';
+            ctx.lineWidth = 1;
+            ctx.setLineDash([5, 5]);
+            ctx.beginPath();
+            ctx.moveTo(fpx + fanRadius, fpy);
+            ctx.lineTo(width, fpy);
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            // Room border
+            ctx.strokeStyle = '#fff';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(1, 1, width - 2, height - 2);
+
+            // Scale markers
+            ctx.fillStyle = '#fff';
+            ctx.font = '10px Space Mono';
+            ctx.fillText('0', 5, height - 5);
+            ctx.fillText(roomL.toFixed(1) + 'm', width - 35, height - 5);
+            ctx.fillText(roomW.toFixed(1) + 'm', 5, 15);
+
+            // Grid lines (subtle)
+            ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+            ctx.lineWidth = 1;
+            for (let x = 1; x < roomL; x++) {
+                const px = x * scaleX;
+                ctx.beginPath();
+                ctx.moveTo(px, 0);
+                ctx.lineTo(px, height);
+                ctx.stroke();
+            }
+            for (let y = 1; y < roomW; y++) {
+                const py = height - y * scaleY;
+                ctx.beginPath();
+                ctx.moveTo(0, py);
+                ctx.lineTo(width, py);
+                ctx.stroke();
+            }
+        }
+
+        function updateColorbars(maxVel) {
+            // Velocity colorbar
+            const velGrad = document.getElementById('velColorbar');
+            velGrad.style.background = `linear-gradient(90deg,
+                rgb(20, 20, 80),
+                rgb(20, 120, 255),
+                rgb(20, 255, 200),
+                rgb(255, 255, 0),
+                rgb(255, 55, 0))`;
+
+            // Draft colorbar
+            const draftGrad = document.getElementById('draftColorbar');
+            draftGrad.style.background = `linear-gradient(90deg,
+                rgb(20, 100, 50),
+                rgb(235, 255, 20),
+                rgb(255, 155, 20),
+                rgb(255, 25, 40))`;
+        }
+
+        // Hover interactions
+        function setupHover(canvas, dataArray, infoElement, isVelocity) {
+            canvas.addEventListener('mousemove', (e) => {
+                if (!dataArray || !currentParams) return;
+
+                const rect = canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                const width = rect.width;
+                const height = rect.height;
+                const resolution = 2;
+                const nx = Math.floor(width / resolution);
+                const ny = Math.floor(height / resolution);
+
+                const i = Math.floor(x / resolution);
+                const j = Math.floor(y / resolution);
+
+                if (i >= 0 && i < nx && j >= 0 && j < ny) {
+                    const idx = j * nx + i;
+                    const value = dataArray[idx];
+
+                    // Calculate room coordinates
+                    const roomX = (x / width) * currentParams.roomLength;
+                    const roomY = currentParams.roomWidth - (y / height) * currentParams.roomWidth;
+
+                    if (isVelocity) {
+                        infoElement.textContent = `V: ${value.toFixed(2)} m/s @ (${roomX.toFixed(1)}, ${roomY.toFixed(1)})m`;
+                    } else {
+                        infoElement.textContent = `DR: ${value.toFixed(1)}% @ (${roomX.toFixed(1)}, ${roomY.toFixed(1)})m`;
+                    }
+                }
+            });
+
+            canvas.addEventListener('mouseleave', () => {
+                infoElement.textContent = 'Hover for values';
+            });
+        }
+
+        // Initialize
+        window.addEventListener('load', () => {
+            setupHover(velCanvas, velocityData, document.getElementById('velInfo'), true);
+            setupHover(draftCanvas, draftData, document.getElementById('draftInfo'), false);
+
+            // Draw placeholder
+            setupCanvas(velCanvas, velCtx);
+            setupCanvas(draftCanvas, draftCtx);
+
+            velCtx.fillStyle = '#1a1a1a';
+            velCtx.fillRect(0, 0, velCanvas.width, velCanvas.height);
+            draftCtx.fillStyle = '#1a1a1a';
+            draftCtx.fillRect(0, 0, draftCanvas.width, draftCanvas.height);
+
+            velCtx.fillStyle = '#333';
+            velCtx.font = '16px Space Mono';
+            velCtx.textAlign = 'center';
+            velCtx.fillText('Click "Generate Plots" to visualize', velCanvas.width/4, velCanvas.height/4);
+
+            draftCtx.fillStyle = '#333';
+            draftCtx.font = '16px Space Mono';
+            draftCtx.textAlign = 'center';
+            draftCtx.fillText('Click "Generate Plots" to visualize', draftCanvas.width/4, draftCanvas.height/4);
+
+            // Auto-calculate on load
+            setTimeout(calculate, 500);
+        });
+
+        // Recalculate on window resize
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                if (currentParams) calculate();
+            }, 250);
+        });
+    </script>
+</body>
+</html>
