@@ -588,10 +588,10 @@
             const dpr = window.devicePixelRatio || 1;
             canvas.width = rect.width * dpr;
             canvas.height = rect.height * dpr;
-            ctx.scale(dpr, dpr);
             canvas.style.width = rect.width + 'px';
             canvas.style.height = rect.height + 'px';
-            return { width: rect.width, height: rect.height };
+            // Return actual pixel dimensions for ImageData
+            return { width: canvas.width, height: canvas.height, cssWidth: rect.width, cssHeight: rect.height, dpr: dpr };
         }
 
         // Smooth interpolation helper
@@ -714,6 +714,8 @@
             }, 50);
         }
 
+        let cssDimensions = { width: 0, height: 0 };
+
         function performCalculation() {
             const roomTemp = parseFloat(document.getElementById('roomTemp').value);
             const relHumidity = parseFloat(document.getElementById('relHumidity').value);
@@ -727,15 +729,15 @@
             currentParams = { roomTemp, relHumidity, fanVelocity, fanDiameter, roomLength, roomWidth, fanPosX, fanPosY };
 
             const velDim = setupCanvas(velCanvas, velCtx);
-            const draftDim = setupCanvas(draftCanvas, draftCtx);
+            setupCanvas(draftCanvas, draftCtx);
 
+            // Use actual pixel dimensions for ImageData
             canvasWidth = velDim.width;
             canvasHeight = velDim.height;
+            cssDimensions = { width: velDim.cssWidth, height: velDim.cssHeight };
 
-            // Higher resolution for smoother rendering
-            const resolution = 1;
-            nx = Math.floor(canvasWidth / resolution);
-            ny = Math.floor(canvasHeight / resolution);
+            nx = canvasWidth;
+            ny = canvasHeight;
 
             const scaleX = roomLength / canvasWidth;
             const scaleY = roomWidth / canvasHeight;
@@ -747,16 +749,14 @@
             let maxVel = 0, sumDR = 0, maxDR = 0, countPoints = 0;
             const throwLength = calculateThrowLength(fanVelocity, fanDiameter, 0.25);
 
-            // Create ImageData for smooth rendering
+            // Create ImageData with actual canvas pixel dimensions
             const velImageData = velCtx.createImageData(nx, ny);
             const draftImageData = draftCtx.createImageData(nx, ny);
 
             for (let j = 0; j < ny; j++) {
                 for (let i = 0; i < nx; i++) {
-                    const px = i * resolution;
-                    const py = j * resolution;
-                    const roomX = px * scaleX;
-                    const roomY = roomWidth - (py * scaleY);
+                    const roomX = i * scaleX;
+                    const roomY = roomWidth - (j * scaleY);
                     const dx = roomX - fanPosX;
                     const dy = roomY - fanPosY;
 
@@ -803,11 +803,11 @@
                 }
             }
 
-            // Use putImageData for smooth rendering
+            // Use putImageData for smooth rendering - fills entire canvas
             velCtx.putImageData(velImageData, 0, 0);
             draftCtx.putImageData(draftImageData, 0, 0);
 
-            // Draw overlays
+            // Draw overlays using actual pixel dimensions
             drawRoomElements(velCtx, canvasWidth, canvasHeight, fanPosX, fanPosY, roomLength, roomWidth, fanDiameter, throwLength);
             drawRoomElements(draftCtx, canvasWidth, canvasHeight, fanPosX, fanPosY, roomLength, roomWidth, fanDiameter, throwLength);
 
@@ -921,20 +921,22 @@
             link.click();
         }
 
-        // Hover
+        // Hover - scale mouse coords by dpr to match actual pixel data
         function setupHover(canvas, infoElement, isVelocity) {
             canvas.addEventListener('mousemove', (e) => {
-                if (!velocityData || !currentParams) return;
+                if (!velocityData || !currentParams || !cssDimensions.width) return;
                 const rect = canvas.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const i = Math.floor(x);
-                const j = Math.floor(y);
+                const cssX = e.clientX - rect.left;
+                const cssY = e.clientY - rect.top;
+                // Scale to actual pixel coordinates
+                const dpr = window.devicePixelRatio || 1;
+                const i = Math.floor(cssX * dpr);
+                const j = Math.floor(cssY * dpr);
 
                 if (i >= 0 && i < nx && j >= 0 && j < ny) {
                     const idx = j * nx + i;
-                    const roomX = (x / canvasWidth) * currentParams.roomLength;
-                    const roomY = currentParams.roomWidth - (y / canvasHeight) * currentParams.roomWidth;
+                    const roomX = (cssX / cssDimensions.width) * currentParams.roomLength;
+                    const roomY = currentParams.roomWidth - (cssY / cssDimensions.height) * currentParams.roomWidth;
 
                     if (isVelocity) {
                         const zone = zoneData[idx];
