@@ -14,7 +14,6 @@
         }
 
         :root {
-            /* CBE-inspired color palette */
             --cbe-primary: #1976D2;
             --cbe-primary-dark: #1565C0;
             --cbe-primary-light: #42A5F5;
@@ -25,10 +24,8 @@
             --cbe-text-primary: #212121;
             --cbe-text-secondary: #757575;
             --cbe-border: #E0E0E0;
-            --cbe-divider: #EEEEEE;
             --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
             --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
-            --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
             --radius: 8px;
         }
 
@@ -40,11 +37,10 @@
             line-height: 1.5;
         }
 
-        /* HEADER */
         header {
             background: var(--cbe-surface);
             border-bottom: 1px solid var(--cbe-border);
-            padding: 1rem 2rem;
+            padding: 0.75rem 1.5rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -54,164 +50,153 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.625rem;
         }
 
         .logo-icon {
-            width: 40px;
-            height: 40px;
+            width: 32px;
+            height: 32px;
             background: linear-gradient(135deg, var(--cbe-primary), var(--cbe-secondary));
-            border-radius: var(--radius);
+            border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-weight: 700;
-            font-size: 1.25rem;
+            font-size: 1rem;
         }
 
         h1 {
-            font-size: 1.25rem;
+            font-size: 1.125rem;
             font-weight: 600;
-            color: var(--cbe-text-primary);
         }
 
         .header-subtitle {
-            font-size: 0.75rem;
+            font-size: 0.6875rem;
             color: var(--cbe-text-secondary);
-            font-weight: 400;
         }
 
         .header-badge {
             background: var(--cbe-primary);
             color: white;
-            padding: 0.375rem 0.75rem;
+            padding: 0.25rem 0.625rem;
             border-radius: 100px;
-            font-size: 0.75rem;
+            font-size: 0.6875rem;
             font-weight: 500;
         }
 
-        /* MAIN CONTAINER */
         .container {
             display: grid;
-            grid-template-columns: 340px 1fr;
-            min-height: calc(100vh - 70px);
+            grid-template-columns: 300px 1fr;
+            height: calc(100vh - 52px);
         }
 
-        @media (max-width: 1100px) {
+        @media (max-width: 1000px) {
             .container {
                 grid-template-columns: 1fr;
+                height: auto;
             }
         }
 
-        /* INPUT PANEL */
         .input-panel {
             background: var(--cbe-surface);
             border-right: 1px solid var(--cbe-border);
-            padding: 1.5rem;
+            padding: 1rem;
             overflow-y: auto;
         }
 
         .panel-header {
-            font-size: 0.875rem;
+            font-size: 0.75rem;
             font-weight: 600;
             color: var(--cbe-primary);
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            margin-bottom: 1.25rem;
-            padding-bottom: 0.75rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
             border-bottom: 2px solid var(--cbe-primary);
         }
 
         .input-section {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .section-title {
-            font-size: 0.75rem;
+            font-size: 0.6875rem;
             font-weight: 600;
             color: var(--cbe-text-secondary);
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.375rem;
         }
 
         .section-title::before {
             content: '';
             width: 3px;
-            height: 12px;
+            height: 10px;
             background: var(--cbe-primary);
             border-radius: 2px;
         }
 
         .input-group {
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
         }
 
         label {
             display: block;
-            font-size: 0.8125rem;
+            font-size: 0.75rem;
             font-weight: 500;
-            color: var(--cbe-text-primary);
-            margin-bottom: 0.375rem;
+            margin-bottom: 0.25rem;
         }
 
         input[type="number"] {
             width: 100%;
-            padding: 0.625rem 0.75rem;
+            padding: 0.5rem 0.625rem;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9375rem;
+            font-size: 0.875rem;
             background: var(--cbe-background);
             border: 1px solid var(--cbe-border);
-            border-radius: var(--radius);
-            color: var(--cbe-text-primary);
+            border-radius: 6px;
             transition: all 0.2s ease;
-        }
-
-        input[type="number"]:hover {
-            border-color: var(--cbe-primary-light);
         }
 
         input[type="number"]:focus {
             outline: none;
             border-color: var(--cbe-primary);
-            box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.15);
+            box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.15);
         }
 
         .unit {
-            font-size: 0.6875rem;
+            font-size: 0.625rem;
             color: var(--cbe-text-secondary);
-            margin-top: 0.25rem;
+            margin-top: 0.125rem;
         }
 
         .input-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 0.75rem;
+            gap: 0.5rem;
         }
 
-        /* CALCULATE BUTTON */
         .calculate-btn {
             width: 100%;
-            padding: 0.875rem 1.5rem;
+            padding: 0.75rem 1rem;
             font-family: 'Inter', sans-serif;
-            font-size: 0.9375rem;
+            font-size: 0.875rem;
             font-weight: 600;
             background: linear-gradient(135deg, var(--cbe-primary), var(--cbe-primary-dark));
             color: white;
             border: none;
-            border-radius: var(--radius);
+            border-radius: 6px;
             cursor: pointer;
             transition: all 0.2s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
-            margin-top: 1.5rem;
-            box-shadow: var(--shadow-sm);
+            gap: 0.375rem;
+            margin-top: 1rem;
         }
 
         .calculate-btn:hover {
@@ -219,61 +204,59 @@
             box-shadow: var(--shadow-md);
         }
 
-        .calculate-btn:active {
-            transform: translateY(0);
-        }
-
         .calculate-btn svg {
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
         }
 
-        /* VISUALIZATION PANEL */
         .viz-panel {
-            padding: 1.5rem;
+            padding: 1rem;
             background: var(--cbe-background);
             overflow-y: auto;
         }
 
-        /* STATS BAR */
         .stats-bar {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 800px) {
+            .stats-bar {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         .stat-card {
             background: var(--cbe-surface);
-            border-radius: var(--radius);
-            padding: 1rem;
+            border-radius: 6px;
+            padding: 0.75rem;
             box-shadow: var(--shadow-sm);
             border: 1px solid var(--cbe-border);
         }
 
         .stat-value {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 600;
             color: var(--cbe-primary);
         }
 
         .stat-label {
-            font-size: 0.6875rem;
+            font-size: 0.625rem;
             color: var(--cbe-text-secondary);
             text-transform: uppercase;
             letter-spacing: 0.03em;
-            margin-top: 0.25rem;
         }
 
-        /* PLOTS */
         .plots-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
+            gap: 1rem;
         }
 
-        @media (max-width: 1400px) {
+        @media (max-width: 1200px) {
             .plots-container {
                 grid-template-columns: 1fr;
             }
@@ -281,7 +264,7 @@
 
         .plot-card {
             background: var(--cbe-surface);
-            border-radius: var(--radius);
+            border-radius: 6px;
             box-shadow: var(--shadow-sm);
             border: 1px solid var(--cbe-border);
             overflow: hidden;
@@ -291,18 +274,17 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0.875rem 1rem;
+            padding: 0.625rem 0.75rem;
             border-bottom: 1px solid var(--cbe-border);
             background: var(--cbe-background);
         }
 
         .plot-title {
-            font-size: 0.875rem;
+            font-size: 0.8125rem;
             font-weight: 600;
-            color: var(--cbe-text-primary);
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.375rem;
         }
 
         .plot-title-icon {
@@ -311,69 +293,87 @@
             border-radius: 50%;
         }
 
-        .plot-title-icon.velocity {
-            background: var(--cbe-primary);
+        .plot-title-icon.velocity { background: var(--cbe-primary); }
+        .plot-title-icon.draft { background: var(--cbe-accent); }
+
+        .download-btn {
+            background: var(--cbe-surface);
+            border: 1px solid var(--cbe-border);
+            border-radius: 4px;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.6875rem;
+            font-weight: 500;
+            color: var(--cbe-text-secondary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            transition: all 0.2s;
         }
 
-        .plot-title-icon.draft {
-            background: var(--cbe-accent);
+        .download-btn:hover {
+            background: var(--cbe-primary);
+            color: white;
+            border-color: var(--cbe-primary);
+        }
+
+        .download-btn svg {
+            width: 12px;
+            height: 12px;
         }
 
         .canvas-container {
             position: relative;
-            background: #263238;
+            background: #1a2026;
         }
 
         canvas {
             width: 100%;
-            height: 350px;
+            height: 220px;
             display: block;
         }
 
         .hover-info {
             position: absolute;
-            bottom: 8px;
-            left: 8px;
-            background: rgba(38, 50, 56, 0.9);
+            bottom: 6px;
+            left: 6px;
+            background: rgba(26, 32, 38, 0.9);
             color: white;
-            padding: 0.375rem 0.625rem;
+            padding: 0.25rem 0.5rem;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.6875rem;
-            border-radius: 4px;
-            backdrop-filter: blur(4px);
+            font-size: 0.625rem;
+            border-radius: 3px;
         }
 
         .colorbar {
             display: flex;
             align-items: center;
-            padding: 0.75rem 1rem;
-            background: #263238;
-            gap: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            background: #1a2026;
+            gap: 0.5rem;
         }
 
         .colorbar-gradient {
             flex: 1;
-            height: 12px;
-            border-radius: 6px;
-            border: 1px solid rgba(255,255,255,0.2);
+            height: 10px;
+            border-radius: 5px;
         }
 
         .colorbar-label {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.625rem;
-            color: rgba(255,255,255,0.8);
-            min-width: 50px;
+            font-size: 0.5625rem;
+            color: rgba(255,255,255,0.7);
+            min-width: 45px;
         }
 
         .colorbar-label:last-child {
             text-align: right;
         }
 
-        /* ZONE INDICATOR */
         .zone-legend {
             display: flex;
-            gap: 1rem;
-            padding: 0.625rem 1rem;
+            gap: 0.75rem;
+            padding: 0.5rem 0.75rem;
             background: var(--cbe-background);
             border-top: 1px solid var(--cbe-border);
             flex-wrap: wrap;
@@ -382,49 +382,20 @@
         .zone-item {
             display: flex;
             align-items: center;
-            gap: 0.375rem;
-            font-size: 0.6875rem;
+            gap: 0.25rem;
+            font-size: 0.625rem;
             color: var(--cbe-text-secondary);
         }
 
         .zone-dot {
-            width: 8px;
-            height: 8px;
+            width: 6px;
+            height: 6px;
             border-radius: 50%;
         }
 
-        /* FOOTER */
-        footer {
-            background: var(--cbe-surface);
-            border-top: 1px solid var(--cbe-border);
-            padding: 1rem 2rem;
-            text-align: center;
-            font-size: 0.75rem;
-            color: var(--cbe-text-secondary);
-        }
-
-        footer a {
-            color: var(--cbe-primary);
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* LOADING */
-        .calculating {
-            opacity: 0.7;
-            pointer-events: none;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        .spinner {
-            animation: spin 1s linear infinite;
-        }
+        .calculating { opacity: 0.7; pointer-events: none; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .spinner { animation: spin 1s linear infinite; }
     </style>
 </head>
 <body>
@@ -445,13 +416,11 @@
 
             <div class="input-section">
                 <div class="section-title">Environment</div>
-
                 <div class="input-group">
                     <label for="roomTemp">Room Temperature</label>
                     <input type="number" id="roomTemp" value="26" step="0.1" min="10" max="40">
                     <div class="unit">degrees Celsius (°C)</div>
                 </div>
-
                 <div class="input-group">
                     <label for="relHumidity">Relative Humidity</label>
                     <input type="number" id="relHumidity" value="50" step="1" min="0" max="100">
@@ -461,13 +430,11 @@
 
             <div class="input-section">
                 <div class="section-title">Fan Parameters</div>
-
                 <div class="input-group">
                     <label for="fanVelocity">Outlet Velocity (V₀)</label>
                     <input type="number" id="fanVelocity" value="3.0" step="0.1" min="0.1" max="15">
                     <div class="unit">meters per second (m/s)</div>
                 </div>
-
                 <div class="input-group">
                     <label for="fanDiameter">Fan Diameter (D₀)</label>
                     <input type="number" id="fanDiameter" value="0.4" step="0.01" min="0.1" max="2">
@@ -542,6 +509,14 @@
                             <span class="plot-title-icon velocity"></span>
                             Velocity Distribution
                         </div>
+                        <button class="download-btn" onclick="downloadPlot('velocity')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            PNG
+                        </button>
                     </div>
                     <div class="canvas-container">
                         <canvas id="velocityCanvas"></canvas>
@@ -553,10 +528,10 @@
                         <span class="colorbar-label" id="velMax">3.0 m/s</span>
                     </div>
                     <div class="zone-legend">
-                        <div class="zone-item"><span class="zone-dot" style="background:#E3F2FD"></span>Zone 1: Core</div>
-                        <div class="zone-item"><span class="zone-dot" style="background:#64B5F6"></span>Zone 2: Transition</div>
-                        <div class="zone-item"><span class="zone-dot" style="background:#1976D2"></span>Zone 3: Decay</div>
-                        <div class="zone-item"><span class="zone-dot" style="background:#0D47A1"></span>Zone 4: Terminal</div>
+                        <div class="zone-item"><span class="zone-dot" style="background:#0D47A1"></span>Zone 1: Core</div>
+                        <div class="zone-item"><span class="zone-dot" style="background:#1976D2"></span>Zone 2: Transition</div>
+                        <div class="zone-item"><span class="zone-dot" style="background:#64B5F6"></span>Zone 3: Decay</div>
+                        <div class="zone-item"><span class="zone-dot" style="background:#E3F2FD"></span>Zone 4: Terminal</div>
                     </div>
                 </div>
 
@@ -566,6 +541,14 @@
                             <span class="plot-title-icon draft"></span>
                             Draft Risk (% Dissatisfied)
                         </div>
+                        <button class="download-btn" onclick="downloadPlot('draft')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            PNG
+                        </button>
                     </div>
                     <div class="canvas-container">
                         <canvas id="draftCanvas"></canvas>
@@ -587,24 +570,18 @@
         </main>
     </div>
 
-    <footer>
-        Room Jet Flow Plotter — Based on ASHRAE Handbook Fundamentals (Space Air Diffusion) & ASHRAE Standard 55
-    </footer>
-
     <script>
-        // Initialize canvases
         const velCanvas = document.getElementById('velocityCanvas');
         const draftCanvas = document.getElementById('draftCanvas');
         const velCtx = velCanvas.getContext('2d');
         const draftCtx = draftCanvas.getContext('2d');
 
-        // Data storage
         let velocityData = null;
         let draftData = null;
         let zoneData = null;
         let currentParams = null;
+        let canvasWidth, canvasHeight, nx, ny;
 
-        // Setup canvas resolution
         function setupCanvas(canvas, ctx) {
             const rect = canvas.getBoundingClientRect();
             const dpr = window.devicePixelRatio || 1;
@@ -613,164 +590,117 @@
             ctx.scale(dpr, dpr);
             canvas.style.width = rect.width + 'px';
             canvas.style.height = rect.height + 'px';
+            return { width: rect.width, height: rect.height };
         }
 
-        // CBE-style velocity colormap (blue gradient)
+        // Smooth interpolation helper
+        function smoothstep(edge0, edge1, x) {
+            const t = Math.max(0, Math.min(1, (x - edge0) / (edge1 - edge0)));
+            return t * t * (3 - 2 * t);
+        }
+
+        // Improved velocity color with smooth transitions (dark=high, light=low like ASHRAE diagram)
         function velocityColor(v, maxV) {
             const t = Math.min(v / maxV, 1);
-            // Light blue to dark blue (CBE style)
-            if (t < 0.2) {
-                const s = t / 0.2;
-                return `rgb(${Math.floor(227 - s * 27)}, ${Math.floor(242 - s * 25)}, ${Math.floor(253 - s * 23)})`;
-            } else if (t < 0.4) {
-                const s = (t - 0.2) / 0.2;
-                return `rgb(${Math.floor(200 - s * 100)}, ${Math.floor(217 - s * 36)}, ${Math.floor(230 - s * 24)})`;
-            } else if (t < 0.6) {
-                const s = (t - 0.4) / 0.2;
-                return `rgb(${Math.floor(100 - s * 75)}, ${Math.floor(181 - s * 80)}, ${Math.floor(206 + s * 4)})`;
-            } else if (t < 0.8) {
-                const s = (t - 0.6) / 0.2;
-                return `rgb(${Math.floor(25)}, ${Math.floor(101 + s * 17)}, ${Math.floor(210 - s * 30)})`;
-            } else {
-                const s = (t - 0.8) / 0.2;
-                return `rgb(${Math.floor(25 - s * 12)}, ${Math.floor(118 - s * 47)}, ${Math.floor(180 - s * 19)})`;
-            }
+            // Smooth gradient: light (low) to dark (high) - matching ASHRAE diagram style
+            const r = Math.floor(227 - t * 214);
+            const g = Math.floor(242 - t * 206);
+            const b = Math.floor(253 - t * 92);
+            return { r, g, b };
         }
 
-        // CBE-style draft risk colormap (green -> yellow -> orange -> red)
-        function draftColor(dr) {
+        // Smooth draft risk colors
+        function draftColorSmooth(dr) {
             const t = Math.min(dr / 100, 1);
+            let r, g, b;
             if (t < 0.15) {
-                // Green - comfortable
-                const s = t / 0.15;
-                return `rgb(${Math.floor(76 + s * 63)}, ${Math.floor(175 - s * 6)}, ${Math.floor(80 - s * 8)})`;
+                const s = smoothstep(0, 0.15, t);
+                r = Math.floor(76 + s * 63);
+                g = Math.floor(175 - s * 6);
+                b = Math.floor(80 - s * 8);
             } else if (t < 0.25) {
-                // Yellow-green to yellow
-                const s = (t - 0.15) / 0.1;
-                return `rgb(${Math.floor(139 + s * 116)}, ${Math.floor(169 + s * 24)}, ${Math.floor(72 - s * 65)})`;
+                const s = smoothstep(0.15, 0.25, t);
+                r = Math.floor(139 + s * 116);
+                g = Math.floor(169 + s * 24);
+                b = Math.floor(72 - s * 65);
             } else if (t < 0.40) {
-                // Yellow to orange
-                const s = (t - 0.25) / 0.15;
-                return `rgb(${Math.floor(255)}, ${Math.floor(193 - s * 41)}, ${Math.floor(7)})`;
+                const s = smoothstep(0.25, 0.40, t);
+                r = 255;
+                g = Math.floor(193 - s * 41);
+                b = Math.floor(7);
             } else {
-                // Orange to red
-                const s = Math.min((t - 0.40) / 0.60, 1);
-                return `rgb(${Math.floor(255 - s * 11)}, ${Math.floor(152 - s * 84)}, ${Math.floor(0 + s * 54)})`;
+                const s = smoothstep(0.40, 1.0, t);
+                r = Math.floor(255 - s * 11);
+                g = Math.floor(152 - s * 84);
+                b = Math.floor(0 + s * 54);
             }
+            return { r, g, b };
         }
 
-        /**
-         * ASHRAE 4-Zone Jet Flow Model
-         * Based on ASHRAE Handbook Fundamentals - Space Air Diffusion
-         *
-         * Zone 1: Potential Core (x/D0 < 4-5)
-         * Zone 2: Transition (4-5 < x/D0 < 8)
-         * Zone 3: Axisymmetric Decay (8 < x/D0 < 100)
-         * Zone 4: Terminal (x/D0 > 100)
-         */
+        // ASHRAE 4-Zone Jet with smoother transitions
         function calculateJetVelocity4Zone(x, r, V0, D0) {
-            const xD = x / D0; // Normalized axial distance
-
-            // Throw constant for circular free jets
+            const xD = x / D0;
             const K = 6.2;
+            const zone1End = 5;
+            const zone2End = 8;
+            const zone3End = 100;
 
-            // Zone boundaries
-            const zone1End = 5;      // End of potential core
-            const zone2End = 8;      // End of transition zone
-            const zone3End = 100;    // End of characteristic decay
-
-            let Vx; // Centerline velocity
-            let zone;
+            let Vx, zone;
 
             if (xD <= zone1End) {
-                // ZONE 1: Potential Core
-                // Centerline velocity remains at V0
-                // Core contracts but centerline maintains initial velocity
                 Vx = V0;
                 zone = 1;
             } else if (xD <= zone2End) {
-                // ZONE 2: Transition Zone
-                // Velocity begins to decay, transition from core to fully developed
-                const t = (xD - zone1End) / (zone2End - zone1End);
-                const VxAtZone2End = V0 * K * D0 / (zone2End * D0);
+                // Smooth transition using smoothstep
+                const t = smoothstep(zone1End, zone2End, xD);
+                const VxAtZone2End = V0 * K / zone2End;
                 Vx = V0 * (1 - t) + VxAtZone2End * t;
                 zone = 2;
             } else if (xD <= zone3End) {
-                // ZONE 3: Axisymmetric/Characteristic Decay
-                // Vx/V0 = K * (D0/x) - Classic 1/x decay
                 Vx = V0 * K * D0 / x;
                 zone = 3;
             } else {
-                // ZONE 4: Terminal Zone
-                // Jet velocity approaches ambient, very slow decay
                 const VxAtZone3End = V0 * K / zone3End;
                 const decay = Math.exp(-(xD - zone3End) / 50);
                 Vx = VxAtZone3End * decay + 0.05 * (1 - decay);
                 zone = 4;
             }
 
-            // Jet spreading angle and half-width
-            // ASHRAE: jet spreads at approximately 22-24° total angle (11-12° half-angle)
-            // r_0.5 = 0.097x for x > potential core
+            // Smooth jet width transition
             let r_half;
             if (xD <= zone1End) {
-                // In potential core, jet width is approximately D0
                 r_half = D0 / 2;
+            } else if (xD <= zone2End) {
+                // Smooth transition of jet width
+                const t = smoothstep(zone1End, zone2End, xD);
+                const r_half_core = D0 / 2;
+                const r_half_developed = 0.097 * x + D0 / 2;
+                r_half = r_half_core * (1 - t) + r_half_developed * t;
             } else {
-                // Beyond core: r_0.5 = 0.097x + D0/2 (accounts for initial width)
                 r_half = 0.097 * x + D0 / 2;
             }
 
-            // Gaussian radial velocity profile
-            // V(r) = Vx * exp(-0.693 * (r/r_0.5)^2)
+            // Gaussian profile with smoother edges
             const V = Vx * Math.exp(-0.693 * Math.pow(r / r_half, 2));
-
             return { velocity: Math.max(0, V), zone: zone };
         }
 
-        /**
-         * ASHRAE Throw Length Calculation
-         * Throw (T) = distance where centerline velocity decays to terminal velocity
-         *
-         * From ASHRAE: T = K * sqrt(A0) * (V0/Vt)
-         * For circular outlet: T = K * D0 * (V0/Vt)
-         *
-         * Where Vt = terminal velocity (typically 0.25 m/s for occupied zone)
-         */
         function calculateThrowLength(V0, D0, Vt = 0.25) {
             const K = 6.2;
-            // T = K * D0 * (V0 / Vt)
-            // But we need to account for the characteristic decay zone
-            // Vx = V0 * K * D0 / x => x = V0 * K * D0 / Vx
-            // At throw distance: x = V0 * K * D0 / Vt
-            const T = V0 * K * D0 / Vt;
-            return T;
+            return V0 * K * D0 / Vt;
         }
 
-        /**
-         * ASHRAE Draft Risk (DR) Calculation - ASHRAE Standard 55
-         * DR = (34 - ta) * (v - 0.05)^0.62 * (0.37 * v * Tu + 3.14)
-         */
         function calculateDraftRisk(temp, velocity, x, D0) {
-            // Turbulence intensity varies with distance
-            // Near fan: Tu ≈ 10-15%, increases with distance due to mixing
             const Tu0 = 0.10;
             const xD = x / D0;
             const Tu = Math.min(0.60, Tu0 + 0.04 * Math.sqrt(xD));
-
             const v = Math.max(velocity, 0.05);
             const ta = temp;
-
-            if (v <= 0.05 || ta >= 34) {
-                return 0;
-            }
-
+            if (v <= 0.05 || ta >= 34) return 0;
             const DR = (34 - ta) * Math.pow(v - 0.05, 0.62) * (0.37 * v * Tu + 3.14);
-
             return Math.min(100, Math.max(0, DR));
         }
 
-        // Main calculation function
         function calculate() {
             const btn = document.querySelector('.calculate-btn');
             btn.classList.add('calculating');
@@ -780,11 +710,10 @@
                 performCalculation();
                 btn.classList.remove('calculating');
                 btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg> Generate Plots';
-            }, 100);
+            }, 50);
         }
 
         function performCalculation() {
-            // Get input values
             const roomTemp = parseFloat(document.getElementById('roomTemp').value);
             const relHumidity = parseFloat(document.getElementById('relHumidity').value);
             const fanVelocity = parseFloat(document.getElementById('fanVelocity').value);
@@ -794,63 +723,52 @@
             const fanPosX = parseFloat(document.getElementById('fanPosX').value);
             const fanPosY = parseFloat(document.getElementById('fanPosY').value);
 
-            currentParams = {
-                roomTemp, relHumidity, fanVelocity, fanDiameter,
-                roomLength, roomWidth, fanPosX, fanPosY
-            };
+            currentParams = { roomTemp, relHumidity, fanVelocity, fanDiameter, roomLength, roomWidth, fanPosX, fanPosY };
 
-            // Setup canvases
-            setupCanvas(velCanvas, velCtx);
-            setupCanvas(draftCanvas, draftCtx);
+            const velDim = setupCanvas(velCanvas, velCtx);
+            const draftDim = setupCanvas(draftCanvas, draftCtx);
 
-            const width = velCanvas.getBoundingClientRect().width;
-            const height = velCanvas.getBoundingClientRect().height;
+            canvasWidth = velDim.width;
+            canvasHeight = velDim.height;
 
-            const resolution = 2;
-            const nx = Math.floor(width / resolution);
-            const ny = Math.floor(height / resolution);
+            // Higher resolution for smoother rendering
+            const resolution = 1;
+            nx = Math.floor(canvasWidth / resolution);
+            ny = Math.floor(canvasHeight / resolution);
 
-            const scaleX = roomLength / width;
-            const scaleY = roomWidth / height;
+            const scaleX = roomLength / canvasWidth;
+            const scaleY = roomWidth / canvasHeight;
 
             velocityData = new Float32Array(nx * ny);
             draftData = new Float32Array(nx * ny);
             zoneData = new Uint8Array(nx * ny);
 
-            let maxVel = 0;
-            let sumDR = 0;
-            let maxDR = 0;
-            let countPoints = 0;
-
-            // Calculate throw length
+            let maxVel = 0, sumDR = 0, maxDR = 0, countPoints = 0;
             const throwLength = calculateThrowLength(fanVelocity, fanDiameter, 0.25);
 
-            // Calculate velocity and draft at each point
+            // Create ImageData for smooth rendering
+            const velImageData = velCtx.createImageData(nx, ny);
+            const draftImageData = draftCtx.createImageData(nx, ny);
+
             for (let j = 0; j < ny; j++) {
                 for (let i = 0; i < nx; i++) {
                     const px = i * resolution;
                     const py = j * resolution;
-
                     const roomX = px * scaleX;
                     const roomY = roomWidth - (py * scaleY);
-
                     const dx = roomX - fanPosX;
                     const dy = roomY - fanPosY;
 
-                    let velocity = 0.05; // Background air movement
+                    let velocity = 0.05;
                     let zone = 0;
 
                     if (dx > 0.01) {
-                        const x = dx;
-                        const r = Math.abs(dy);
-
-                        const result = calculateJetVelocity4Zone(x, r, fanVelocity, fanDiameter);
+                        const result = calculateJetVelocity4Zone(dx, Math.abs(dy), fanVelocity, fanDiameter);
                         velocity = Math.max(result.velocity, 0.05);
                         zone = result.zone;
                     }
 
-                    const dr = calculateDraftRisk(roomTemp, velocity,
-                        Math.max(0.1, Math.sqrt(dx*dx + dy*dy)), fanDiameter);
+                    const dr = calculateDraftRisk(roomTemp, velocity, Math.max(0.1, Math.sqrt(dx*dx + dy*dy)), fanDiameter);
 
                     const idx = j * nx + i;
                     velocityData[idx] = velocity;
@@ -864,109 +782,112 @@
                 }
             }
 
-            const avgDR = sumDR / countPoints;
+            // Second pass: render with actual maxVel
+            for (let j = 0; j < ny; j++) {
+                for (let i = 0; i < nx; i++) {
+                    const idx = j * nx + i;
+                    const pixelIdx = idx * 4;
+
+                    const velColor = velocityColor(velocityData[idx], maxVel);
+                    velImageData.data[pixelIdx] = velColor.r;
+                    velImageData.data[pixelIdx + 1] = velColor.g;
+                    velImageData.data[pixelIdx + 2] = velColor.b;
+                    velImageData.data[pixelIdx + 3] = 255;
+
+                    const drColor = draftColorSmooth(draftData[idx]);
+                    draftImageData.data[pixelIdx] = drColor.r;
+                    draftImageData.data[pixelIdx + 1] = drColor.g;
+                    draftImageData.data[pixelIdx + 2] = drColor.b;
+                    draftImageData.data[pixelIdx + 3] = 255;
+                }
+            }
+
+            // Use putImageData for smooth rendering
+            velCtx.putImageData(velImageData, 0, 0);
+            draftCtx.putImageData(draftImageData, 0, 0);
+
+            // Draw overlays
+            drawRoomElements(velCtx, canvasWidth, canvasHeight, fanPosX, fanPosY, roomLength, roomWidth, fanDiameter, throwLength);
+            drawRoomElements(draftCtx, canvasWidth, canvasHeight, fanPosX, fanPosY, roomLength, roomWidth, fanDiameter, throwLength);
 
             // Update stats
+            const avgDR = sumDR / countPoints;
             document.getElementById('statMaxVel').textContent = maxVel.toFixed(2);
             document.getElementById('statThrow').textContent = Math.min(throwLength, roomLength - fanPosX).toFixed(1);
             document.getElementById('statAvgDR').textContent = avgDR.toFixed(1);
             document.getElementById('statMaxDR').textContent = maxDR.toFixed(1);
             document.getElementById('velMax').textContent = maxVel.toFixed(1) + ' m/s';
 
-            // Draw velocity plot
-            for (let j = 0; j < ny; j++) {
-                for (let i = 0; i < nx; i++) {
-                    const idx = j * nx + i;
-                    const v = velocityData[idx];
-                    velCtx.fillStyle = velocityColor(v, maxVel);
-                    velCtx.fillRect(i * resolution, j * resolution, resolution, resolution);
-                }
-            }
-
-            // Draw draft plot
-            for (let j = 0; j < ny; j++) {
-                for (let i = 0; i < nx; i++) {
-                    const idx = j * nx + i;
-                    const dr = draftData[idx];
-                    draftCtx.fillStyle = draftColor(dr);
-                    draftCtx.fillRect(i * resolution, j * resolution, resolution, resolution);
-                }
-            }
-
-            // Draw room elements
-            drawRoomElements(velCtx, width, height, fanPosX, fanPosY, roomLength, roomWidth, fanDiameter, throwLength);
-            drawRoomElements(draftCtx, width, height, fanPosX, fanPosY, roomLength, roomWidth, fanDiameter, throwLength);
-
-            // Update colorbars
             updateColorbars(maxVel);
         }
 
         function drawRoomElements(ctx, width, height, fanX, fanY, roomL, roomW, fanD, throwLen) {
             const scaleX = width / roomL;
             const scaleY = height / roomW;
-
             const fpx = fanX * scaleX;
             const fpy = height - (fanY * scaleY);
             const fanRadius = (fanD / 2) * scaleX;
 
-            // Draw fan
+            // Draw jet envelope (smooth cone shape)
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            const jetLength = Math.min(throwLen, roomL - fanX) * scaleX;
+            const spreadAngle = Math.atan(0.097) * 2; // ~11 degrees
+            const endWidth = jetLength * Math.tan(spreadAngle) + fanRadius;
+            ctx.moveTo(fpx + fanRadius, fpy - fanRadius);
+            ctx.lineTo(fpx + fanRadius + jetLength, fpy - endWidth);
+            ctx.moveTo(fpx + fanRadius, fpy + fanRadius);
+            ctx.lineTo(fpx + fanRadius + jetLength, fpy + endWidth);
+            ctx.stroke();
+
+            // Fan circle
             ctx.strokeStyle = 'rgba(255, 255, 255, 0.9)';
             ctx.lineWidth = 2;
             ctx.beginPath();
             ctx.arc(fpx, fpy, fanRadius, 0, Math.PI * 2);
             ctx.stroke();
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
             ctx.fill();
 
-            // Fan direction arrow
+            // Fan arrow
             ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
             ctx.beginPath();
-            ctx.moveTo(fpx + fanRadius + 12, fpy);
-            ctx.lineTo(fpx + fanRadius + 4, fpy - 6);
-            ctx.lineTo(fpx + fanRadius + 4, fpy + 6);
+            ctx.moveTo(fpx + fanRadius + 10, fpy);
+            ctx.lineTo(fpx + fanRadius + 3, fpy - 5);
+            ctx.lineTo(fpx + fanRadius + 3, fpy + 5);
             ctx.closePath();
             ctx.fill();
 
-            // Throw distance marker
+            // Throw marker
             const throwPx = Math.min(throwLen * scaleX + fpx, width - 5);
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
             ctx.lineWidth = 1;
-            ctx.setLineDash([4, 4]);
-            ctx.beginPath();
-            ctx.moveTo(throwPx, fpy - 15);
-            ctx.lineTo(throwPx, fpy + 15);
-            ctx.stroke();
-            ctx.setLineDash([]);
-
-            // Throw label
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-            ctx.font = '10px Inter';
-            ctx.fillText('T=' + Math.min(throwLen, roomL - fanX).toFixed(1) + 'm', throwPx + 3, fpy - 5);
-
-            // Jet centerline (dashed)
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
             ctx.setLineDash([3, 3]);
             ctx.beginPath();
-            ctx.moveTo(fpx + fanRadius, fpy);
-            ctx.lineTo(width, fpy);
+            ctx.moveTo(throwPx, fpy - 12);
+            ctx.lineTo(throwPx, fpy + 12);
             ctx.stroke();
             ctx.setLineDash([]);
 
-            // Room border
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.6)';
-            ctx.lineWidth = 1;
-            ctx.strokeRect(1, 1, width - 2, height - 2);
-
-            // Scale markers
             ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
-            ctx.font = '10px JetBrains Mono';
-            ctx.fillText('0', 5, height - 5);
-            ctx.fillText(roomL.toFixed(0) + 'm', width - 25, height - 5);
-            ctx.fillText(roomW.toFixed(0) + 'm', 5, 12);
+            ctx.font = '9px Inter';
+            ctx.fillText('T=' + Math.min(throwLen, roomL - fanX).toFixed(1) + 'm', throwPx + 2, fpy - 4);
 
-            // Grid lines
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+            // Room border
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
             ctx.lineWidth = 1;
+            ctx.strokeRect(0.5, 0.5, width - 1, height - 1);
+
+            // Scale labels
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+            ctx.font = '9px JetBrains Mono';
+            ctx.fillText('0', 4, height - 4);
+            ctx.fillText(roomL.toFixed(0) + 'm', width - 22, height - 4);
+            ctx.fillText(roomW.toFixed(0) + 'm', 4, 10);
+
+            // Grid
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.06)';
             for (let x = 1; x < roomL; x++) {
                 const px = x * scaleX;
                 ctx.beginPath();
@@ -984,91 +905,63 @@
         }
 
         function updateColorbars(maxVel) {
-            // Velocity colorbar (CBE blue gradient)
-            const velGrad = document.getElementById('velColorbar');
-            velGrad.style.background = `linear-gradient(90deg,
-                #E3F2FD, #BBDEFB, #64B5F6, #1976D2, #0D47A1)`;
-
-            // Draft colorbar (green-yellow-orange-red)
-            const draftGrad = document.getElementById('draftColorbar');
-            draftGrad.style.background = `linear-gradient(90deg,
-                #4CAF50, #8BC34A, #FFEB3B, #FFC107, #FF9800, #F44336)`;
+            document.getElementById('velColorbar').style.background =
+                'linear-gradient(90deg, #E3F2FD, #BBDEFB, #64B5F6, #1976D2, #0D47A1)';
+            document.getElementById('draftColorbar').style.background =
+                'linear-gradient(90deg, #4CAF50, #8BC34A, #FFEB3B, #FFC107, #FF9800, #F44336)';
         }
 
-        // Hover interactions
-        function setupHover(canvas, dataArray, infoElement, isVelocity) {
-            canvas.addEventListener('mousemove', (e) => {
-                if (!dataArray || !currentParams) return;
+        // Download function
+        function downloadPlot(type) {
+            const canvas = type === 'velocity' ? velCanvas : draftCanvas;
+            const link = document.createElement('a');
+            link.download = `jet-flow-${type}-${Date.now()}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
 
+        // Hover
+        function setupHover(canvas, infoElement, isVelocity) {
+            canvas.addEventListener('mousemove', (e) => {
+                if (!velocityData || !currentParams) return;
                 const rect = canvas.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
-
-                const width = rect.width;
-                const height = rect.height;
-                const resolution = 2;
-                const nx = Math.floor(width / resolution);
-                const ny = Math.floor(height / resolution);
-
-                const i = Math.floor(x / resolution);
-                const j = Math.floor(y / resolution);
+                const i = Math.floor(x);
+                const j = Math.floor(y);
 
                 if (i >= 0 && i < nx && j >= 0 && j < ny) {
                     const idx = j * nx + i;
-                    const value = dataArray[idx];
-
-                    const roomX = (x / width) * currentParams.roomLength;
-                    const roomY = currentParams.roomWidth - (y / height) * currentParams.roomWidth;
+                    const roomX = (x / canvasWidth) * currentParams.roomLength;
+                    const roomY = currentParams.roomWidth - (y / canvasHeight) * currentParams.roomWidth;
 
                     if (isVelocity) {
-                        const zone = zoneData ? zoneData[idx] : 0;
+                        const zone = zoneData[idx];
                         const zoneNames = ['—', 'Core', 'Trans', 'Decay', 'Term'];
-                        infoElement.textContent = `V: ${value.toFixed(2)} m/s | Zone ${zone}: ${zoneNames[zone]} | (${roomX.toFixed(1)}, ${roomY.toFixed(1)})m`;
+                        infoElement.textContent = `V: ${velocityData[idx].toFixed(2)} m/s | Zone: ${zoneNames[zone]} | (${roomX.toFixed(1)}, ${roomY.toFixed(1)})m`;
                     } else {
-                        infoElement.textContent = `DR: ${value.toFixed(1)}% | (${roomX.toFixed(1)}, ${roomY.toFixed(1)})m`;
+                        infoElement.textContent = `DR: ${draftData[idx].toFixed(1)}% | (${roomX.toFixed(1)}, ${roomY.toFixed(1)})m`;
                     }
                 }
             });
-
             canvas.addEventListener('mouseleave', () => {
                 infoElement.textContent = 'Hover for values';
             });
         }
 
-        // Initialize
         window.addEventListener('load', () => {
-            setupHover(velCanvas, velocityData, document.getElementById('velInfo'), true);
-            setupHover(draftCanvas, draftData, document.getElementById('draftInfo'), false);
-
-            setupCanvas(velCanvas, velCtx);
-            setupCanvas(draftCanvas, draftCtx);
-
-            velCtx.fillStyle = '#263238';
-            velCtx.fillRect(0, 0, velCanvas.width, velCanvas.height);
-            draftCtx.fillStyle = '#263238';
-            draftCtx.fillRect(0, 0, draftCanvas.width, draftCanvas.height);
-
-            velCtx.fillStyle = 'rgba(255,255,255,0.3)';
-            velCtx.font = '14px Inter';
-            velCtx.textAlign = 'center';
-            velCtx.fillText('Click "Generate Plots" to visualize', velCanvas.width/4, velCanvas.height/4);
-
-            draftCtx.fillStyle = 'rgba(255,255,255,0.3)';
-            draftCtx.font = '14px Inter';
-            draftCtx.textAlign = 'center';
-            draftCtx.fillText('Click "Generate Plots" to visualize', draftCanvas.width/4, draftCanvas.height/4);
-
+            setupHover(velCanvas, document.getElementById('velInfo'), true);
+            setupHover(draftCanvas, document.getElementById('draftInfo'), false);
             updateColorbars(3);
-            setTimeout(calculate, 300);
+            setTimeout(calculate, 200);
         });
 
-        // Recalculate on resize
         let resizeTimeout;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimeout);
             resizeTimeout = setTimeout(() => {
                 if (currentParams) calculate();
-            }, 250);
+            }, 200);
         });
     </script>
 </body>
