@@ -19,6 +19,7 @@
             --cbe-primary-light: #42A5F5;
             --cbe-secondary: #00897B;
             --cbe-accent: #FF6F00;
+            --cbe-set: #9C27B0;
             --cbe-background: #FAFAFA;
             --cbe-surface: #FFFFFF;
             --cbe-text-primary: #212121;
@@ -40,7 +41,7 @@
         header {
             background: var(--cbe-surface);
             border-bottom: 1px solid var(--cbe-border);
-            padding: 0.75rem 1.5rem;
+            padding: 0.5rem 1rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -50,45 +51,45 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 0.625rem;
+            gap: 0.5rem;
         }
 
         .logo-icon {
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             background: linear-gradient(135deg, var(--cbe-primary), var(--cbe-secondary));
-            border-radius: 6px;
+            border-radius: 5px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 0.875rem;
         }
 
         h1 {
-            font-size: 1.125rem;
+            font-size: 1rem;
             font-weight: 600;
         }
 
         .header-subtitle {
-            font-size: 0.6875rem;
+            font-size: 0.625rem;
             color: var(--cbe-text-secondary);
         }
 
         .header-badge {
             background: var(--cbe-primary);
             color: white;
-            padding: 0.25rem 0.625rem;
+            padding: 0.2rem 0.5rem;
             border-radius: 100px;
-            font-size: 0.6875rem;
+            font-size: 0.625rem;
             font-weight: 500;
         }
 
         .container {
             display: grid;
-            grid-template-columns: 300px 1fr;
-            height: calc(100vh - 52px);
+            grid-template-columns: 280px 1fr;
+            height: calc(100vh - 44px);
         }
 
         @media (max-width: 1000px) {
@@ -101,64 +102,64 @@
         .input-panel {
             background: var(--cbe-surface);
             border-right: 1px solid var(--cbe-border);
-            padding: 1rem;
+            padding: 0.75rem;
             overflow-y: auto;
         }
 
         .panel-header {
-            font-size: 0.75rem;
+            font-size: 0.6875rem;
             font-weight: 600;
             color: var(--cbe-primary);
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.375rem;
             border-bottom: 2px solid var(--cbe-primary);
         }
 
         .input-section {
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
         }
 
         .section-title {
-            font-size: 0.6875rem;
+            font-size: 0.625rem;
             font-weight: 600;
             color: var(--cbe-text-secondary);
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.375rem;
             display: flex;
             align-items: center;
-            gap: 0.375rem;
+            gap: 0.25rem;
         }
 
         .section-title::before {
             content: '';
-            width: 3px;
-            height: 10px;
+            width: 2px;
+            height: 8px;
             background: var(--cbe-primary);
-            border-radius: 2px;
+            border-radius: 1px;
         }
 
         .input-group {
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
         }
 
         label {
             display: block;
-            font-size: 0.75rem;
+            font-size: 0.6875rem;
             font-weight: 500;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.125rem;
         }
 
         input[type="number"] {
             width: 100%;
-            padding: 0.5rem 0.625rem;
+            padding: 0.375rem 0.5rem;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.875rem;
+            font-size: 0.8125rem;
             background: var(--cbe-background);
             border: 1px solid var(--cbe-border);
-            border-radius: 6px;
+            border-radius: 4px;
             transition: all 0.2s ease;
         }
 
@@ -169,34 +170,33 @@
         }
 
         .unit {
-            font-size: 0.625rem;
+            font-size: 0.5625rem;
             color: var(--cbe-text-secondary);
-            margin-top: 0.125rem;
         }
 
         .input-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 0.5rem;
+            gap: 0.375rem;
         }
 
         .calculate-btn {
             width: 100%;
-            padding: 0.75rem 1rem;
+            padding: 0.625rem 0.75rem;
             font-family: 'Inter', sans-serif;
-            font-size: 0.875rem;
+            font-size: 0.8125rem;
             font-weight: 600;
             background: linear-gradient(135deg, var(--cbe-primary), var(--cbe-primary-dark));
             color: white;
             border: none;
-            border-radius: 6px;
+            border-radius: 5px;
             cursor: pointer;
             transition: all 0.2s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.375rem;
-            margin-top: 1rem;
+            gap: 0.25rem;
+            margin-top: 0.75rem;
         }
 
         .calculate-btn:hover {
@@ -205,47 +205,42 @@
         }
 
         .calculate-btn svg {
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
         }
 
         .viz-panel {
-            padding: 0.75rem;
+            padding: 0.5rem;
             background: var(--cbe-background);
             overflow-y: auto;
         }
 
         .stats-bar {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 0.5rem;
-            margin-bottom: 0.75rem;
-        }
-
-        @media (max-width: 800px) {
-            .stats-bar {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 0.375rem;
-            }
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.375rem;
+            margin-bottom: 0.5rem;
         }
 
         .stat-card {
             background: var(--cbe-surface);
             border-radius: 4px;
-            padding: 0.5rem;
+            padding: 0.375rem;
             box-shadow: var(--shadow-sm);
             border: 1px solid var(--cbe-border);
         }
 
         .stat-value {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 1rem;
+            font-size: 0.9375rem;
             font-weight: 600;
             color: var(--cbe-primary);
         }
 
+        .stat-value.set { color: var(--cbe-set); }
+
         .stat-label {
-            font-size: 0.5625rem;
+            font-size: 0.5rem;
             color: var(--cbe-text-secondary);
             text-transform: uppercase;
             letter-spacing: 0.02em;
@@ -253,13 +248,22 @@
 
         .plots-container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.75rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
         }
 
-        @media (max-width: 1200px) {
+        @media (max-width: 1400px) {
+            .plots-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 900px) {
             .plots-container {
                 grid-template-columns: 1fr;
+            }
+            .stats-bar {
+                grid-template-columns: repeat(3, 1fr);
             }
         }
 
@@ -275,13 +279,13 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0.375rem 0.5rem;
+            padding: 0.25rem 0.375rem;
             border-bottom: 1px solid var(--cbe-border);
             background: var(--cbe-background);
         }
 
         .plot-title {
-            font-size: 0.6875rem;
+            font-size: 0.625rem;
             font-weight: 600;
             display: flex;
             align-items: center;
@@ -296,13 +300,14 @@
 
         .plot-title-icon.velocity { background: var(--cbe-primary); }
         .plot-title-icon.draft { background: var(--cbe-accent); }
+        .plot-title-icon.set { background: var(--cbe-set); }
 
         .download-btn {
             background: var(--cbe-surface);
             border: 1px solid var(--cbe-border);
             border-radius: 3px;
-            padding: 0.125rem 0.375rem;
-            font-size: 0.5625rem;
+            padding: 0.125rem 0.25rem;
+            font-size: 0.5rem;
             font-weight: 500;
             color: var(--cbe-text-secondary);
             cursor: pointer;
@@ -319,8 +324,8 @@
         }
 
         .download-btn svg {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
         }
 
         .canvas-container {
@@ -330,41 +335,41 @@
 
         canvas {
             width: 100%;
-            height: 160px;
+            height: 140px;
             display: block;
         }
 
         .hover-info {
             position: absolute;
-            bottom: 4px;
-            left: 4px;
+            bottom: 3px;
+            left: 3px;
             background: rgba(26, 32, 38, 0.9);
             color: white;
-            padding: 0.125rem 0.375rem;
+            padding: 0.1rem 0.25rem;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.5625rem;
+            font-size: 0.5rem;
             border-radius: 2px;
         }
 
         .colorbar {
             display: flex;
             align-items: center;
-            padding: 0.25rem 0.5rem;
+            padding: 0.2rem 0.375rem;
             background: #1a2026;
-            gap: 0.375rem;
+            gap: 0.25rem;
         }
 
         .colorbar-gradient {
             flex: 1;
-            height: 8px;
-            border-radius: 4px;
+            height: 6px;
+            border-radius: 3px;
         }
 
         .colorbar-label {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.5rem;
+            font-size: 0.4375rem;
             color: rgba(255,255,255,0.7);
-            min-width: 40px;
+            min-width: 32px;
         }
 
         .colorbar-label:last-child {
@@ -373,8 +378,8 @@
 
         .zone-legend {
             display: flex;
-            gap: 0.5rem;
-            padding: 0.25rem 0.5rem;
+            gap: 0.375rem;
+            padding: 0.2rem 0.375rem;
             background: var(--cbe-background);
             border-top: 1px solid var(--cbe-border);
             flex-wrap: wrap;
@@ -383,20 +388,29 @@
         .zone-item {
             display: flex;
             align-items: center;
-            gap: 0.125rem;
-            font-size: 0.5rem;
+            gap: 0.1rem;
+            font-size: 0.4375rem;
             color: var(--cbe-text-secondary);
         }
 
         .zone-dot {
-            width: 5px;
-            height: 5px;
+            width: 4px;
+            height: 4px;
             border-radius: 50%;
         }
 
         .calculating { opacity: 0.7; pointer-events: none; }
         @keyframes spin { to { transform: rotate(360deg); } }
         .spinner { animation: spin 1s linear infinite; }
+
+        .set-loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgba(255,255,255,0.5);
+            font-size: 0.625rem;
+        }
     </style>
 </head>
 <body>
@@ -420,12 +434,12 @@
                 <div class="input-group">
                     <label for="roomTemp">Room Temperature</label>
                     <input type="number" id="roomTemp" value="26" step="0.1" min="10" max="40">
-                    <div class="unit">degrees Celsius (°C)</div>
+                    <div class="unit">°C</div>
                 </div>
                 <div class="input-group">
                     <label for="relHumidity">Relative Humidity</label>
                     <input type="number" id="relHumidity" value="50" step="1" min="0" max="100">
-                    <div class="unit">percent (%)</div>
+                    <div class="unit">%</div>
                 </div>
             </div>
 
@@ -434,12 +448,12 @@
                 <div class="input-group">
                     <label for="fanVelocity">Outlet Velocity (V₀)</label>
                     <input type="number" id="fanVelocity" value="3.0" step="0.1" min="0.1" max="15">
-                    <div class="unit">meters per second (m/s)</div>
+                    <div class="unit">m/s</div>
                 </div>
                 <div class="input-group">
                     <label for="fanDiameter">Fan Diameter (D₀)</label>
                     <input type="number" id="fanDiameter" value="0.4" step="0.01" min="0.1" max="2">
-                    <div class="unit">meters (m)</div>
+                    <div class="unit">m</div>
                 </div>
             </div>
 
@@ -449,12 +463,12 @@
                     <div class="input-group">
                         <label for="roomLength">Length</label>
                         <input type="number" id="roomLength" value="8" step="0.1" min="2" max="30">
-                        <div class="unit">meters (m)</div>
+                        <div class="unit">m</div>
                     </div>
                     <div class="input-group">
                         <label for="roomWidth">Width</label>
                         <input type="number" id="roomWidth" value="6" step="0.1" min="2" max="30">
-                        <div class="unit">meters (m)</div>
+                        <div class="unit">m</div>
                     </div>
                 </div>
             </div>
@@ -465,12 +479,12 @@
                     <div class="input-group">
                         <label for="fanPosX">X Position</label>
                         <input type="number" id="fanPosX" value="0.5" step="0.1" min="0">
-                        <div class="unit">from left wall (m)</div>
+                        <div class="unit">m from left</div>
                     </div>
                     <div class="input-group">
                         <label for="fanPosY">Y Position</label>
                         <input type="number" id="fanPosY" value="3" step="0.1" min="0">
-                        <div class="unit">from bottom wall (m)</div>
+                        <div class="unit">m from bottom</div>
                     </div>
                 </div>
             </div>
@@ -487,19 +501,23 @@
             <div class="stats-bar">
                 <div class="stat-card">
                     <div class="stat-value" id="statMaxVel">—</div>
-                    <div class="stat-label">Max Velocity (m/s)</div>
+                    <div class="stat-label">Max Vel (m/s)</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-value" id="statThrow">—</div>
-                    <div class="stat-label">Throw Distance (m)</div>
+                    <div class="stat-label">Throw (m)</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-value" id="statAvgDR">—</div>
-                    <div class="stat-label">Avg Draft Risk (%)</div>
+                    <div class="stat-label">Avg DR (%)</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-value" id="statMaxDR">—</div>
-                    <div class="stat-label">Max Draft Risk (%)</div>
+                    <div class="stat-label">Max DR (%)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value set" id="statAvgSET">—</div>
+                    <div class="stat-label">Avg SET (°C)</div>
                 </div>
             </div>
 
@@ -524,15 +542,15 @@
                         <div class="hover-info" id="velInfo">Hover for values</div>
                     </div>
                     <div class="colorbar">
-                        <span class="colorbar-label">0.0 m/s</span>
+                        <span class="colorbar-label">0 m/s</span>
                         <div class="colorbar-gradient" id="velColorbar"></div>
-                        <span class="colorbar-label" id="velMax">3.0 m/s</span>
+                        <span class="colorbar-label" id="velMax">3 m/s</span>
                     </div>
                     <div class="zone-legend">
-                        <div class="zone-item"><span class="zone-dot" style="background:#0D47A1"></span>Zone 1: Core</div>
-                        <div class="zone-item"><span class="zone-dot" style="background:#1976D2"></span>Zone 2: Transition</div>
-                        <div class="zone-item"><span class="zone-dot" style="background:#64B5F6"></span>Zone 3: Decay</div>
-                        <div class="zone-item"><span class="zone-dot" style="background:#E3F2FD"></span>Zone 4: Terminal</div>
+                        <div class="zone-item"><span class="zone-dot" style="background:#0D47A1"></span>Core</div>
+                        <div class="zone-item"><span class="zone-dot" style="background:#1976D2"></span>Trans</div>
+                        <div class="zone-item"><span class="zone-dot" style="background:#64B5F6"></span>Decay</div>
+                        <div class="zone-item"><span class="zone-dot" style="background:#E3F2FD"></span>Term</div>
                     </div>
                 </div>
 
@@ -540,7 +558,7 @@
                     <div class="plot-header">
                         <div class="plot-title">
                             <span class="plot-title-icon draft"></span>
-                            Draft Risk (% Dissatisfied)
+                            Draft Risk (%)
                         </div>
                         <button class="download-btn" onclick="downloadPlot('draft')">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -561,10 +579,43 @@
                         <span class="colorbar-label">100%</span>
                     </div>
                     <div class="zone-legend">
-                        <div class="zone-item"><span class="zone-dot" style="background:#4CAF50"></span>&lt;15% Comfortable</div>
-                        <div class="zone-item"><span class="zone-dot" style="background:#FFC107"></span>15-25% Acceptable</div>
-                        <div class="zone-item"><span class="zone-dot" style="background:#FF9800"></span>25-40% Uncomfortable</div>
-                        <div class="zone-item"><span class="zone-dot" style="background:#F44336"></span>&gt;40% Unacceptable</div>
+                        <div class="zone-item"><span class="zone-dot" style="background:#4CAF50"></span>&lt;15%</div>
+                        <div class="zone-item"><span class="zone-dot" style="background:#FFC107"></span>15-25%</div>
+                        <div class="zone-item"><span class="zone-dot" style="background:#FF9800"></span>25-40%</div>
+                        <div class="zone-item"><span class="zone-dot" style="background:#F44336"></span>&gt;40%</div>
+                    </div>
+                </div>
+
+                <div class="plot-card">
+                    <div class="plot-header">
+                        <div class="plot-title">
+                            <span class="plot-title-icon set"></span>
+                            SET (°C)
+                        </div>
+                        <button class="download-btn" onclick="downloadPlot('set')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            PNG
+                        </button>
+                    </div>
+                    <div class="canvas-container">
+                        <canvas id="setCanvas"></canvas>
+                        <div class="hover-info" id="setInfo">Hover for values</div>
+                        <div class="set-loading" id="setLoading"></div>
+                    </div>
+                    <div class="colorbar">
+                        <span class="colorbar-label" id="setMin">20°C</span>
+                        <div class="colorbar-gradient" id="setColorbar"></div>
+                        <span class="colorbar-label" id="setMax">30°C</span>
+                    </div>
+                    <div class="zone-legend">
+                        <div class="zone-item"><span class="zone-dot" style="background:#2196F3"></span>&lt;23°C Cool</div>
+                        <div class="zone-item"><span class="zone-dot" style="background:#4CAF50"></span>23-26°C Comfort</div>
+                        <div class="zone-item"><span class="zone-dot" style="background:#FF9800"></span>26-28°C Warm</div>
+                        <div class="zone-item"><span class="zone-dot" style="background:#F44336"></span>&gt;28°C Hot</div>
                     </div>
                 </div>
             </div>
@@ -574,14 +625,129 @@
     <script>
         const velCanvas = document.getElementById('velocityCanvas');
         const draftCanvas = document.getElementById('draftCanvas');
+        const setCanvas = document.getElementById('setCanvas');
         const velCtx = velCanvas.getContext('2d');
         const draftCtx = draftCanvas.getContext('2d');
+        const setCtx = setCanvas.getContext('2d');
 
         let velocityData = null;
         let draftData = null;
         let zoneData = null;
+        let setData = null;
         let currentParams = null;
         let canvasWidth, canvasHeight, nx, ny;
+        let cssDimensions = { width: 0, height: 0 };
+
+        // SET Worker (inline)
+        let setWorker = null;
+        const SET_GRID_SIZE = 1000; // 1000 points for SET calculation
+
+        // Create inline Web Worker for SET calculations
+        function createSETWorker() {
+            const workerCode = `
+                // Simplified SET calculation based on ASHRAE two-node model
+                // This is a reasonable approximation for the SET equation
+                function calculateSET(tdb, tr, v, rh, met, clo) {
+                    // Standard values
+                    const bodyWeight = 70; // kg
+                    const bodyArea = 1.8; // m²
+                    const metRate = met * 58.15; // W/m²
+                    const work = 0; // W/m²
+                    const internalHeat = metRate - work;
+
+                    // Clothing resistance
+                    const Icl = clo * 0.155; // m²K/W
+                    const fcl = clo <= 0.5 ? 1 + 0.2 * clo : 1.05 + 0.1 * clo;
+
+                    // Air velocity effect on convective heat transfer
+                    const va = Math.max(v, 0.1);
+                    const hc = 12.1 * Math.sqrt(va); // convective coefficient
+
+                    // Operative temperature (simplified)
+                    const to = (tdb + tr) / 2;
+
+                    // Saturated vapor pressure at skin temperature (assumed ~34°C)
+                    const tsk = 34; // mean skin temperature approximation
+                    const psk = 5.67; // kPa at 34°C
+
+                    // Ambient vapor pressure
+                    const psTdb = 0.6108 * Math.exp(17.27 * tdb / (tdb + 237.3));
+                    const pa = psTdb * rh / 100;
+
+                    // Evaporative heat loss components
+                    const Esk = 0.42 * (internalHeat - 58.15); // regulatory sweating
+                    const Ediff = 3.05 * (5.73 - 0.007 * internalHeat - pa); // diffusion
+                    const Eres = 0.0173 * metRate * (5.87 - pa); // respiration latent
+                    const Cres = 0.0014 * metRate * (34 - tdb); // respiration sensible
+
+                    // Heat balance iteration to find SET
+                    // SET is the temperature of a standard environment that produces
+                    // the same physiological response as the actual environment
+
+                    // Standard environment: v=0.1m/s, rh=50%, clo=0.6, met=1.0
+                    const vStd = 0.1;
+                    const rhStd = 50;
+                    const hcStd = 12.1 * Math.sqrt(vStd);
+
+                    // Calculate heat loss in actual environment
+                    const Rclf = Icl / fcl;
+                    const hcf = fcl * hc;
+                    const Rcomb = 1 / hcf + Rclf;
+                    const Qsens = (tsk - to) / Rcomb;
+
+                    // Calculate SET iteratively
+                    // SET is where standard environment gives same heat loss
+                    const IclStd = 0.6 * 0.155;
+                    const fclStd = 1 + 0.2 * 0.6;
+                    const RcombStd = 1 / (fclStd * hcStd) + IclStd / fclStd;
+
+                    // Solve for SET: Qsens = (tsk - SET) / RcombStd
+                    // SET = tsk - Qsens * RcombStd
+                    let SET = tsk - Qsens * RcombStd;
+
+                    // Apply correction for humidity effect
+                    const humidityCorrection = (rh - 50) * 0.02;
+                    SET += humidityCorrection;
+
+                    // Apply correction for metabolic rate
+                    const metCorrection = (met - 1.0) * 0.5;
+                    SET += metCorrection;
+
+                    // Clamp to reasonable range
+                    return Math.max(15, Math.min(40, SET));
+                }
+
+                self.onmessage = function(e) {
+                    const { velocities, tdb, rh, met, clo, gridX, gridY, requestId } = e.data;
+
+                    const results = new Float32Array(velocities.length);
+                    const tr = tdb; // Mean radiant = air temp
+
+                    for (let i = 0; i < velocities.length; i++) {
+                        const v = Math.max(velocities[i], 0.1);
+                        results[i] = calculateSET(tdb, tr, v, rh, met, clo);
+                    }
+
+                    self.postMessage({
+                        requestId,
+                        setValues: results,
+                        gridX,
+                        gridY
+                    });
+                };
+            `;
+
+            const blob = new Blob([workerCode], { type: 'application/javascript' });
+            const workerUrl = URL.createObjectURL(blob);
+            return new Worker(workerUrl);
+        }
+
+        function initSETWorker() {
+            if (!setWorker) {
+                setWorker = createSETWorker();
+            }
+            return setWorker;
+        }
 
         function setupCanvas(canvas, ctx) {
             const rect = canvas.getBoundingClientRect();
@@ -590,116 +756,130 @@
             canvas.height = rect.height * dpr;
             canvas.style.width = rect.width + 'px';
             canvas.style.height = rect.height + 'px';
-            // Return actual pixel dimensions for ImageData
             return { width: canvas.width, height: canvas.height, cssWidth: rect.width, cssHeight: rect.height, dpr: dpr };
         }
 
-        // Smooth interpolation helper
         function smoothstep(edge0, edge1, x) {
             const t = Math.max(0, Math.min(1, (x - edge0) / (edge1 - edge0)));
             return t * t * (3 - 2 * t);
         }
 
-        // Improved velocity color with smooth transitions (dark=high, light=low like ASHRAE diagram)
         function velocityColor(v, maxV) {
             const t = Math.min(v / maxV, 1);
-            // Smooth gradient: light (low) to dark (high) - matching ASHRAE diagram style
             const r = Math.floor(227 - t * 214);
             const g = Math.floor(242 - t * 206);
             const b = Math.floor(253 - t * 92);
             return { r, g, b };
         }
 
-        // Smooth draft risk colors
         function draftColorSmooth(dr) {
             const t = Math.min(dr / 100, 1);
             let r, g, b;
             if (t < 0.15) {
                 const s = smoothstep(0, 0.15, t);
-                r = Math.floor(76 + s * 63);
-                g = Math.floor(175 - s * 6);
-                b = Math.floor(80 - s * 8);
+                r = Math.floor(76 + s * 63); g = Math.floor(175 - s * 6); b = Math.floor(80 - s * 8);
             } else if (t < 0.25) {
                 const s = smoothstep(0.15, 0.25, t);
-                r = Math.floor(139 + s * 116);
-                g = Math.floor(169 + s * 24);
-                b = Math.floor(72 - s * 65);
+                r = Math.floor(139 + s * 116); g = Math.floor(169 + s * 24); b = Math.floor(72 - s * 65);
             } else if (t < 0.40) {
                 const s = smoothstep(0.25, 0.40, t);
-                r = 255;
-                g = Math.floor(193 - s * 41);
-                b = Math.floor(7);
+                r = 255; g = Math.floor(193 - s * 41); b = Math.floor(7);
             } else {
                 const s = smoothstep(0.40, 1.0, t);
-                r = Math.floor(255 - s * 11);
-                g = Math.floor(152 - s * 84);
-                b = Math.floor(0 + s * 54);
+                r = Math.floor(255 - s * 11); g = Math.floor(152 - s * 84); b = Math.floor(0 + s * 54);
             }
             return { r, g, b };
         }
 
-        // ASHRAE 4-Zone Jet with smoother transitions
+        // SET color: cool(blue) -> comfort(green) -> warm(orange) -> hot(red)
+        function setColorSmooth(set, minSET, maxSET) {
+            // Comfort range: 23-26°C
+            let r, g, b;
+            if (set < 23) {
+                // Cool - blue
+                const t = Math.max(0, (set - 18) / 5);
+                r = Math.floor(33 + t * 0); g = Math.floor(150 + t * 0); b = Math.floor(243 - t * 50);
+            } else if (set < 26) {
+                // Comfort - green
+                const t = (set - 23) / 3;
+                r = Math.floor(76 + t * 63); g = Math.floor(175 - t * 20); b = Math.floor(80 - t * 30);
+            } else if (set < 28) {
+                // Warm - orange
+                const t = (set - 26) / 2;
+                r = Math.floor(255); g = Math.floor(152 - t * 50); b = Math.floor(0);
+            } else {
+                // Hot - red
+                const t = Math.min(1, (set - 28) / 4);
+                r = Math.floor(244); g = Math.floor(67 - t * 30); b = Math.floor(54);
+            }
+            return { r, g, b };
+        }
+
         function calculateJetVelocity4Zone(x, r, V0, D0) {
             const xD = x / D0;
             const K = 6.2;
-            const zone1End = 5;
-            const zone2End = 8;
-            const zone3End = 100;
-
+            const zone1End = 5, zone2End = 8, zone3End = 100;
             let Vx, zone;
 
-            if (xD <= zone1End) {
-                Vx = V0;
-                zone = 1;
-            } else if (xD <= zone2End) {
-                // Smooth transition using smoothstep
+            if (xD <= zone1End) { Vx = V0; zone = 1; }
+            else if (xD <= zone2End) {
                 const t = smoothstep(zone1End, zone2End, xD);
-                const VxAtZone2End = V0 * K / zone2End;
-                Vx = V0 * (1 - t) + VxAtZone2End * t;
-                zone = 2;
-            } else if (xD <= zone3End) {
-                Vx = V0 * K * D0 / x;
-                zone = 3;
-            } else {
-                const VxAtZone3End = V0 * K / zone3End;
-                const decay = Math.exp(-(xD - zone3End) / 50);
-                Vx = VxAtZone3End * decay + 0.05 * (1 - decay);
-                zone = 4;
-            }
+                Vx = V0 * (1 - t) + (V0 * K / zone2End) * t; zone = 2;
+            } else if (xD <= zone3End) { Vx = V0 * K * D0 / x; zone = 3; }
+            else { Vx = (V0 * K / zone3End) * Math.exp(-(xD - zone3End) / 50) + 0.05; zone = 4; }
 
-            // Smooth jet width transition
-            let r_half;
-            if (xD <= zone1End) {
-                r_half = D0 / 2;
-            } else if (xD <= zone2End) {
-                // Smooth transition of jet width
-                const t = smoothstep(zone1End, zone2End, xD);
-                const r_half_core = D0 / 2;
-                const r_half_developed = 0.097 * x + D0 / 2;
-                r_half = r_half_core * (1 - t) + r_half_developed * t;
-            } else {
-                r_half = 0.097 * x + D0 / 2;
-            }
-
-            // Gaussian profile with smoother edges
+            let r_half = xD <= zone1End ? D0 / 2 :
+                         xD <= zone2End ? (D0/2) * (1 - smoothstep(zone1End, zone2End, xD)) + (0.097 * x + D0/2) * smoothstep(zone1End, zone2End, xD) :
+                         0.097 * x + D0 / 2;
             const V = Vx * Math.exp(-0.693 * Math.pow(r / r_half, 2));
-            return { velocity: Math.max(0, V), zone: zone };
+            return { velocity: Math.max(0, V), zone };
         }
 
-        function calculateThrowLength(V0, D0, Vt = 0.25) {
-            const K = 6.2;
-            return V0 * K * D0 / Vt;
-        }
+        function calculateThrowLength(V0, D0, Vt = 0.25) { return V0 * 6.2 * D0 / Vt; }
 
         function calculateDraftRisk(temp, velocity, x, D0) {
-            const Tu0 = 0.10;
-            const xD = x / D0;
-            const Tu = Math.min(0.60, Tu0 + 0.04 * Math.sqrt(xD));
+            const Tu = Math.min(0.60, 0.10 + 0.04 * Math.sqrt(x / D0));
             const v = Math.max(velocity, 0.05);
-            const ta = temp;
-            if (v <= 0.05 || ta >= 34) return 0;
-            const DR = (34 - ta) * Math.pow(v - 0.05, 0.62) * (0.37 * v * Tu + 3.14);
-            return Math.min(100, Math.max(0, DR));
+            if (v <= 0.05 || temp >= 34) return 0;
+            return Math.min(100, Math.max(0, (34 - temp) * Math.pow(v - 0.05, 0.62) * (0.37 * v * Tu + 3.14)));
+        }
+
+        function extractGridPoints(fullData, dataWidth, dataHeight, gridSize) {
+            const aspectRatio = dataWidth / dataHeight;
+            const gridY = Math.floor(Math.sqrt(gridSize / aspectRatio));
+            const gridX = Math.floor(gridSize / gridY);
+            const stepX = dataWidth / gridX;
+            const stepY = dataHeight / gridY;
+            const velocities = new Float32Array(gridX * gridY);
+
+            let idx = 0;
+            for (let j = 0; j < gridY; j++) {
+                for (let i = 0; i < gridX; i++) {
+                    const dataX = Math.floor(i * stepX + stepX / 2);
+                    const dataY = Math.floor(j * stepY + stepY / 2);
+                    velocities[idx++] = fullData[dataY * dataWidth + dataX] || 0.1;
+                }
+            }
+            return { velocities, gridX, gridY };
+        }
+
+        function interpolateGrid(gridValues, gridX, gridY, targetWidth, targetHeight) {
+            const result = new Float32Array(targetWidth * targetHeight);
+            const scaleX = gridX / targetWidth;
+            const scaleY = gridY / targetHeight;
+
+            for (let j = 0; j < targetHeight; j++) {
+                for (let i = 0; i < targetWidth; i++) {
+                    const gx = i * scaleX, gy = j * scaleY;
+                    const gx0 = Math.floor(gx), gy0 = Math.floor(gy);
+                    const gx1 = Math.min(gx0 + 1, gridX - 1), gy1 = Math.min(gy0 + 1, gridY - 1);
+                    const fx = gx - gx0, fy = gy - gy0;
+                    const v00 = gridValues[gy0 * gridX + gx0], v10 = gridValues[gy0 * gridX + gx1];
+                    const v01 = gridValues[gy1 * gridX + gx0], v11 = gridValues[gy1 * gridX + gx1];
+                    result[j * targetWidth + i] = (v00*(1-fx) + v10*fx)*(1-fy) + (v01*(1-fx) + v11*fx)*fy;
+                }
+            }
+            return result;
         }
 
         function calculate() {
@@ -713,8 +893,6 @@
                 btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg> Generate Plots';
             }, 50);
         }
-
-        let cssDimensions = { width: 0, height: 0 };
 
         function performCalculation() {
             const roomTemp = parseFloat(document.getElementById('roomTemp').value);
@@ -730,14 +908,12 @@
 
             const velDim = setupCanvas(velCanvas, velCtx);
             setupCanvas(draftCanvas, draftCtx);
+            setupCanvas(setCanvas, setCtx);
 
-            // Use actual pixel dimensions for ImageData
             canvasWidth = velDim.width;
             canvasHeight = velDim.height;
             cssDimensions = { width: velDim.cssWidth, height: velDim.cssHeight };
-
-            nx = canvasWidth;
-            ny = canvasHeight;
+            nx = canvasWidth; ny = canvasHeight;
 
             const scaleX = roomLength / canvasWidth;
             const scaleY = roomWidth / canvasHeight;
@@ -749,69 +925,46 @@
             let maxVel = 0, sumDR = 0, maxDR = 0, countPoints = 0;
             const throwLength = calculateThrowLength(fanVelocity, fanDiameter, 0.25);
 
-            // Create ImageData with actual canvas pixel dimensions
             const velImageData = velCtx.createImageData(nx, ny);
             const draftImageData = draftCtx.createImageData(nx, ny);
 
             for (let j = 0; j < ny; j++) {
                 for (let i = 0; i < nx; i++) {
-                    const roomX = i * scaleX;
-                    const roomY = roomWidth - (j * scaleY);
-                    const dx = roomX - fanPosX;
-                    const dy = roomY - fanPosY;
-
-                    let velocity = 0.05;
-                    let zone = 0;
+                    const roomX = i * scaleX, roomY = roomWidth - (j * scaleY);
+                    const dx = roomX - fanPosX, dy = roomY - fanPosY;
+                    let velocity = 0.05, zone = 0;
 
                     if (dx > 0.01) {
                         const result = calculateJetVelocity4Zone(dx, Math.abs(dy), fanVelocity, fanDiameter);
-                        velocity = Math.max(result.velocity, 0.05);
-                        zone = result.zone;
+                        velocity = Math.max(result.velocity, 0.05); zone = result.zone;
                     }
 
                     const dr = calculateDraftRisk(roomTemp, velocity, Math.max(0.1, Math.sqrt(dx*dx + dy*dy)), fanDiameter);
-
                     const idx = j * nx + i;
-                    velocityData[idx] = velocity;
-                    draftData[idx] = dr;
-                    zoneData[idx] = zone;
-
-                    maxVel = Math.max(maxVel, velocity);
-                    maxDR = Math.max(maxDR, dr);
-                    sumDR += dr;
-                    countPoints++;
+                    velocityData[idx] = velocity; draftData[idx] = dr; zoneData[idx] = zone;
+                    maxVel = Math.max(maxVel, velocity); maxDR = Math.max(maxDR, dr);
+                    sumDR += dr; countPoints++;
                 }
             }
 
-            // Second pass: render with actual maxVel
             for (let j = 0; j < ny; j++) {
                 for (let i = 0; i < nx; i++) {
-                    const idx = j * nx + i;
-                    const pixelIdx = idx * 4;
-
+                    const idx = j * nx + i, pixelIdx = idx * 4;
                     const velColor = velocityColor(velocityData[idx], maxVel);
-                    velImageData.data[pixelIdx] = velColor.r;
-                    velImageData.data[pixelIdx + 1] = velColor.g;
-                    velImageData.data[pixelIdx + 2] = velColor.b;
-                    velImageData.data[pixelIdx + 3] = 255;
-
+                    velImageData.data[pixelIdx] = velColor.r; velImageData.data[pixelIdx+1] = velColor.g;
+                    velImageData.data[pixelIdx+2] = velColor.b; velImageData.data[pixelIdx+3] = 255;
                     const drColor = draftColorSmooth(draftData[idx]);
-                    draftImageData.data[pixelIdx] = drColor.r;
-                    draftImageData.data[pixelIdx + 1] = drColor.g;
-                    draftImageData.data[pixelIdx + 2] = drColor.b;
-                    draftImageData.data[pixelIdx + 3] = 255;
+                    draftImageData.data[pixelIdx] = drColor.r; draftImageData.data[pixelIdx+1] = drColor.g;
+                    draftImageData.data[pixelIdx+2] = drColor.b; draftImageData.data[pixelIdx+3] = 255;
                 }
             }
 
-            // Use putImageData for smooth rendering - fills entire canvas
             velCtx.putImageData(velImageData, 0, 0);
             draftCtx.putImageData(draftImageData, 0, 0);
 
-            // Draw overlays using actual pixel dimensions
             drawRoomElements(velCtx, canvasWidth, canvasHeight, fanPosX, fanPosY, roomLength, roomWidth, fanDiameter, throwLength);
             drawRoomElements(draftCtx, canvasWidth, canvasHeight, fanPosX, fanPosY, roomLength, roomWidth, fanDiameter, throwLength);
 
-            // Update stats
             const avgDR = sumDR / countPoints;
             document.getElementById('statMaxVel').textContent = maxVel.toFixed(2);
             document.getElementById('statThrow').textContent = Math.min(throwLength, roomLength - fanPosX).toFixed(1);
@@ -820,141 +973,159 @@
             document.getElementById('velMax').textContent = maxVel.toFixed(1) + ' m/s';
 
             updateColorbars(maxVel);
+
+            // Calculate SET using Web Worker
+            calculateSETPlot(roomTemp, relHumidity);
+        }
+
+        function calculateSETPlot(tdb, rh) {
+            document.getElementById('setLoading').textContent = 'Calculating SET...';
+
+            const worker = initSETWorker();
+            const grid = extractGridPoints(velocityData, nx, ny, SET_GRID_SIZE);
+
+            worker.onmessage = function(e) {
+                const { setValues, gridX, gridY } = e.data;
+
+                // Interpolate to full resolution
+                setData = interpolateGrid(setValues, gridX, gridY, nx, ny);
+
+                // Render SET plot
+                renderSETPlot();
+                document.getElementById('setLoading').textContent = '';
+            };
+
+            worker.postMessage({
+                velocities: Array.from(grid.velocities),
+                tdb: tdb,
+                rh: rh,
+                met: 1.1,  // Seated activity
+                clo: 0.6,  // Summer office clothing
+                gridX: grid.gridX,
+                gridY: grid.gridY,
+                requestId: Date.now()
+            });
+        }
+
+        function renderSETPlot() {
+            if (!setData) return;
+
+            const setImageData = setCtx.createImageData(nx, ny);
+            let minSET = Infinity, maxSET = -Infinity, sumSET = 0;
+
+            for (let i = 0; i < setData.length; i++) {
+                minSET = Math.min(minSET, setData[i]);
+                maxSET = Math.max(maxSET, setData[i]);
+                sumSET += setData[i];
+            }
+
+            for (let j = 0; j < ny; j++) {
+                for (let i = 0; i < nx; i++) {
+                    const idx = j * nx + i;
+                    const pixelIdx = idx * 4;
+                    const color = setColorSmooth(setData[idx], minSET, maxSET);
+                    setImageData.data[pixelIdx] = color.r;
+                    setImageData.data[pixelIdx + 1] = color.g;
+                    setImageData.data[pixelIdx + 2] = color.b;
+                    setImageData.data[pixelIdx + 3] = 255;
+                }
+            }
+
+            setCtx.putImageData(setImageData, 0, 0);
+
+            const { roomLength, roomWidth, fanPosX, fanPosY, fanDiameter, fanVelocity } = currentParams;
+            const throwLength = calculateThrowLength(fanVelocity, fanDiameter, 0.25);
+            drawRoomElements(setCtx, canvasWidth, canvasHeight, fanPosX, fanPosY, roomLength, roomWidth, fanDiameter, throwLength);
+
+            // Update stats
+            const avgSET = sumSET / setData.length;
+            document.getElementById('statAvgSET').textContent = avgSET.toFixed(1);
+            document.getElementById('setMin').textContent = minSET.toFixed(0) + '°C';
+            document.getElementById('setMax').textContent = maxSET.toFixed(0) + '°C';
+
+            // Update colorbar
+            document.getElementById('setColorbar').style.background =
+                'linear-gradient(90deg, #2196F3, #4CAF50, #8BC34A, #FF9800, #F44336)';
         }
 
         function drawRoomElements(ctx, width, height, fanX, fanY, roomL, roomW, fanD, throwLen) {
-            const scaleX = width / roomL;
-            const scaleY = height / roomW;
-            const fpx = fanX * scaleX;
-            const fpy = height - (fanY * scaleY);
+            const scaleX = width / roomL, scaleY = height / roomW;
+            const fpx = fanX * scaleX, fpy = height - (fanY * scaleY);
             const fanRadius = (fanD / 2) * scaleX;
 
-            // Draw jet envelope (smooth cone shape)
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
-            ctx.lineWidth = 1;
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)'; ctx.lineWidth = 1;
             ctx.beginPath();
             const jetLength = Math.min(throwLen, roomL - fanX) * scaleX;
-            const spreadAngle = Math.atan(0.097) * 2; // ~11 degrees
-            const endWidth = jetLength * Math.tan(spreadAngle) + fanRadius;
+            const endWidth = jetLength * Math.tan(Math.atan(0.097) * 2) + fanRadius;
             ctx.moveTo(fpx + fanRadius, fpy - fanRadius);
             ctx.lineTo(fpx + fanRadius + jetLength, fpy - endWidth);
             ctx.moveTo(fpx + fanRadius, fpy + fanRadius);
             ctx.lineTo(fpx + fanRadius + jetLength, fpy + endWidth);
             ctx.stroke();
 
-            // Fan circle
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.9)';
-            ctx.lineWidth = 2;
-            ctx.beginPath();
-            ctx.arc(fpx, fpy, fanRadius, 0, Math.PI * 2);
-            ctx.stroke();
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
-            ctx.fill();
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.9)'; ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.arc(fpx, fpy, fanRadius, 0, Math.PI * 2); ctx.stroke();
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.2)'; ctx.fill();
 
-            // Fan arrow
             ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
-            ctx.beginPath();
-            ctx.moveTo(fpx + fanRadius + 10, fpy);
-            ctx.lineTo(fpx + fanRadius + 3, fpy - 5);
-            ctx.lineTo(fpx + fanRadius + 3, fpy + 5);
-            ctx.closePath();
-            ctx.fill();
+            ctx.beginPath(); ctx.moveTo(fpx + fanRadius + 8, fpy);
+            ctx.lineTo(fpx + fanRadius + 2, fpy - 4); ctx.lineTo(fpx + fanRadius + 2, fpy + 4);
+            ctx.closePath(); ctx.fill();
 
-            // Throw marker
-            const throwPx = Math.min(throwLen * scaleX + fpx, width - 5);
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
-            ctx.lineWidth = 1;
-            ctx.setLineDash([3, 3]);
-            ctx.beginPath();
-            ctx.moveTo(throwPx, fpy - 12);
-            ctx.lineTo(throwPx, fpy + 12);
-            ctx.stroke();
-            ctx.setLineDash([]);
-
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
-            ctx.font = '9px Inter';
-            ctx.fillText('T=' + Math.min(throwLen, roomL - fanX).toFixed(1) + 'm', throwPx + 2, fpy - 4);
-
-            // Room border
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
-            ctx.lineWidth = 1;
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)'; ctx.lineWidth = 1;
             ctx.strokeRect(0.5, 0.5, width - 1, height - 1);
 
-            // Scale labels
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
-            ctx.font = '9px JetBrains Mono';
-            ctx.fillText('0', 4, height - 4);
-            ctx.fillText(roomL.toFixed(0) + 'm', width - 22, height - 4);
-            ctx.fillText(roomW.toFixed(0) + 'm', 4, 10);
-
-            // Grid
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.06)';
-            for (let x = 1; x < roomL; x++) {
-                const px = x * scaleX;
-                ctx.beginPath();
-                ctx.moveTo(px, 0);
-                ctx.lineTo(px, height);
-                ctx.stroke();
-            }
-            for (let y = 1; y < roomW; y++) {
-                const py = height - y * scaleY;
-                ctx.beginPath();
-                ctx.moveTo(0, py);
-                ctx.lineTo(width, py);
-                ctx.stroke();
-            }
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.5)'; ctx.font = '8px JetBrains Mono';
+            ctx.fillText('0', 3, height - 3);
+            ctx.fillText(roomL.toFixed(0) + 'm', width - 18, height - 3);
+            ctx.fillText(roomW.toFixed(0) + 'm', 3, 9);
         }
 
         function updateColorbars(maxVel) {
-            document.getElementById('velColorbar').style.background =
-                'linear-gradient(90deg, #E3F2FD, #BBDEFB, #64B5F6, #1976D2, #0D47A1)';
-            document.getElementById('draftColorbar').style.background =
-                'linear-gradient(90deg, #4CAF50, #8BC34A, #FFEB3B, #FFC107, #FF9800, #F44336)';
+            document.getElementById('velColorbar').style.background = 'linear-gradient(90deg, #E3F2FD, #BBDEFB, #64B5F6, #1976D2, #0D47A1)';
+            document.getElementById('draftColorbar').style.background = 'linear-gradient(90deg, #4CAF50, #8BC34A, #FFEB3B, #FFC107, #FF9800, #F44336)';
+            document.getElementById('setColorbar').style.background = 'linear-gradient(90deg, #2196F3, #4CAF50, #8BC34A, #FF9800, #F44336)';
         }
 
-        // Download function
         function downloadPlot(type) {
-            const canvas = type === 'velocity' ? velCanvas : draftCanvas;
+            const canvas = type === 'velocity' ? velCanvas : type === 'draft' ? draftCanvas : setCanvas;
             const link = document.createElement('a');
             link.download = `jet-flow-${type}-${Date.now()}.png`;
             link.href = canvas.toDataURL('image/png');
             link.click();
         }
 
-        // Hover - scale mouse coords by dpr to match actual pixel data
-        function setupHover(canvas, infoElement, isVelocity) {
+        function setupHover(canvas, infoElement, dataType) {
             canvas.addEventListener('mousemove', (e) => {
                 if (!velocityData || !currentParams || !cssDimensions.width) return;
                 const rect = canvas.getBoundingClientRect();
-                const cssX = e.clientX - rect.left;
-                const cssY = e.clientY - rect.top;
-                // Scale to actual pixel coordinates
+                const cssX = e.clientX - rect.left, cssY = e.clientY - rect.top;
                 const dpr = window.devicePixelRatio || 1;
-                const i = Math.floor(cssX * dpr);
-                const j = Math.floor(cssY * dpr);
+                const i = Math.floor(cssX * dpr), j = Math.floor(cssY * dpr);
 
                 if (i >= 0 && i < nx && j >= 0 && j < ny) {
                     const idx = j * nx + i;
                     const roomX = (cssX / cssDimensions.width) * currentParams.roomLength;
                     const roomY = currentParams.roomWidth - (cssY / cssDimensions.height) * currentParams.roomWidth;
 
-                    if (isVelocity) {
+                    if (dataType === 'velocity') {
                         const zone = zoneData[idx];
                         const zoneNames = ['—', 'Core', 'Trans', 'Decay', 'Term'];
-                        infoElement.textContent = `V: ${velocityData[idx].toFixed(2)} m/s | Zone: ${zoneNames[zone]} | (${roomX.toFixed(1)}, ${roomY.toFixed(1)})m`;
-                    } else {
+                        infoElement.textContent = `V: ${velocityData[idx].toFixed(2)} m/s | ${zoneNames[zone]} | (${roomX.toFixed(1)}, ${roomY.toFixed(1)})m`;
+                    } else if (dataType === 'draft') {
                         infoElement.textContent = `DR: ${draftData[idx].toFixed(1)}% | (${roomX.toFixed(1)}, ${roomY.toFixed(1)})m`;
+                    } else if (dataType === 'set' && setData) {
+                        infoElement.textContent = `SET: ${setData[idx].toFixed(1)}°C | (${roomX.toFixed(1)}, ${roomY.toFixed(1)})m`;
                     }
                 }
             });
-            canvas.addEventListener('mouseleave', () => {
-                infoElement.textContent = 'Hover for values';
-            });
+            canvas.addEventListener('mouseleave', () => { infoElement.textContent = 'Hover for values'; });
         }
 
         window.addEventListener('load', () => {
-            setupHover(velCanvas, document.getElementById('velInfo'), true);
-            setupHover(draftCanvas, document.getElementById('draftInfo'), false);
+            setupHover(velCanvas, document.getElementById('velInfo'), 'velocity');
+            setupHover(draftCanvas, document.getElementById('draftInfo'), 'draft');
+            setupHover(setCanvas, document.getElementById('setInfo'), 'set');
             updateColorbars(3);
             setTimeout(calculate, 200);
         });
@@ -962,9 +1133,7 @@
         let resizeTimeout;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(() => {
-                if (currentParams) calculate();
-            }, 200);
+            resizeTimeout = setTimeout(() => { if (currentParams) calculate(); }, 200);
         });
     </script>
 </body>
