@@ -1,0 +1,17 @@
+{
+  "name": "room-jet-flow",
+  "version": "1.0.0",
+  "description": "Room Jet Flow Plotter with SET thermal comfort analysis",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "jsthermalcomfort": "^1.0.0"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
